@@ -147,7 +147,7 @@ class MetaCIA extends Component {
         <MyNavBar />
         <div className="container main-rocks">
           <Masonry>
-            {!this.props.me.isActive && activateRock}
+            {activateRock}
             {manageRock}
             {bugbountRock}
             {lawRock}

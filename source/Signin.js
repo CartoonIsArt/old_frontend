@@ -18,7 +18,7 @@ class Signin extends Component {
       isPasswordAlert: false,
       isPasswordConfirmAlert: false,
       isPhonenumberAlert: false,
-      isSuccess: false,
+      isSuccess: true,
       username: '',
       last_name: '',
       password: '',
