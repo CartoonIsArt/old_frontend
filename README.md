@@ -2,4 +2,4 @@
 
 react native.
 
-demo: cia.kw.ac.kr:3000
+demo: http//cia.kw.ac.kr:3000/
