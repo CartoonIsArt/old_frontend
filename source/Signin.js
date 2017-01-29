@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import DayPicker, {DateUtils} from "react-day-picker"
-import {Radio, RadioGroup, Switch} from "@blueprintjs/core"
+import {Toaster, Radio, RadioGroup, Switch} from "@blueprintjs/core"
 import {DateInput} from '@blueprintjs/datetime'
 import 'moment/locale/ko'
 import MomentLocaleUtils from 'react-day-picker/moment'
@@ -23,6 +23,9 @@ class Signin extends Component {
       phone_number: '',
       date_of_birth: new Date(new Date().setFullYear(new Date().getFullYear() - 20)),
     }
+  }
+  componentWillMount() {
+    this.toaster = Toaster.create()
   }
   onNameBlur(event) {
     var last_name = event.target.value.toString()
@@ -79,6 +82,13 @@ class Signin extends Component {
     .then(res => {
       if (res === 204)  { //create success
         this.setState({isSuccess: true})
+      }
+      else {            //fail
+        this.toaster.show({
+          className: "toaster-fail",
+          timeout: 1000,
+          message: "입력값이 올바르지 않습니다"
+        })
       }
     })
   }
