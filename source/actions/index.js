@@ -138,6 +138,12 @@ const headers = (method, body) => {
   }
 }
 
+export const isExistUsername = body => dispatch => {
+  return fetch(host + '/existence/?username=' + body.username, headers("GET"))
+  .then(res => res.json()
+  .then( json => json))
+}
+
 export const signin = body => dispatch => {
   return fetch(host + '/signin/', headers("POST", JSON.stringify(body)))
   .then(res => {

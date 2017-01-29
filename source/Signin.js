@@ -5,12 +5,14 @@ import {DateInput} from '@blueprintjs/datetime'
 import 'moment/locale/ko'
 import MomentLocaleUtils from 'react-day-picker/moment'
 import {connect} from 'react-redux'
-import {signin} from './actions'
+import {isExistUsername, signin} from './actions'
 
 class Signin extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      isUsernameTooShortAlert: false,
+      isUsernameAlreadyExistAlert: false,
       isNameAlert: false,
       isUsernameAlert: false,
       isPasswordAlert: false,
@@ -93,6 +95,22 @@ class Signin extends Component {
     })
   }
 
+  handleUsernameChange(e) {
+    if(e.target.value.length < 6) {
+      this.setState({isUsernameTooShortAlert: true})
+      this.setState({isUsernameAlreadyExistAlert: false})
+    }
+    else {
+      this.setState({isUsernameTooShortAlert: false})
+      this.props.isExistUsername({username: e.target.value})
+      .then(res => {
+        res.message ?
+        this.setState({isUsernameAlreadyExistAlert: true}) :
+        this.setState({isUsernameAlreadyExistAlert: false})
+      })
+    }
+  }
+
   render() {
     return (
       <div className="club-page">
@@ -117,11 +135,18 @@ class Signin extends Component {
                 <div className="club-join-form"> {/* ---------- username  */ }
                   <strong> 아이디 </strong>
                   <input type="text" 
+                    onChange={e => this.handleUsernameChange(e)}
                     className={this.state.isUsernameAlert ? "club-join-input pt-input pt-intent-danger" : "club-join-input pt-input .modifier" }
                       onBlur={this.onUsernameBlur.bind(this)} />
                   {this.state.isUsernameAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
                       이 칸은 비어있으면 안 됨 </small> </span> }
+                  {this.state.isUsernameAlreadyExistAlert && 
+                    <span role="alert" className="club-join-input-error"> <small>
+                      이미 누가 그거 함 </small> </span> }
+                  {this.state.isUsernameTooShortAlert && 
+                    <span role="alert" className="club-join-input-error"> <small>
+                      너무 짧음(6자 이상) </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- password  */ }
                   <strong> 패스워드 </strong>
@@ -190,6 +215,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = ({
+  isExistUsername,
   signin
 })
 
