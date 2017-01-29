@@ -360,6 +360,7 @@ span.pt-icon::before {
   font-family: inherit; }
 
 body {
+  font-family: "Nanum Gothic", sans-serif;
   background-color: white;
   background-repeat: no-repeat;
   background-attachment: fixed;
