@@ -158,8 +158,14 @@ span.pt-icon::before {
   font-family: "Nanum Gothic", sans-serif;
   color: #FFFFFF; }
 
+.toaster-fail {
+  background-color: #F2552C;
+  font-family: "Nanum Gothic", sans-serif;
+  color: #FFFFFF; }
+
 .comment-delete-toaster {
   background-color: #88B04B;
+  font-size: 0.75em;
   font-family: "Nanum Gothic", sans-serif;
   color: #FFFFFF; }
 

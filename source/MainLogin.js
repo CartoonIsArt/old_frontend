@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect } from 'react-redux'
 import {login} from './actions'
 import {Link} from 'react-router';
-import {Alert} from '@blueprintjs/core'
+import {Alert, Toaster, IToaster, Intent} from '@blueprintjs/core'
 
 class MainLogin extends Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class MainLogin extends Component {
     this.usernameChange = this.usernameChange.bind(this)
     this.passwordChange = this.passwordChange.bind(this)
     this.mySubmit = this.mySubmit.bind(this)
+  }
+  componentWillMount() {
+    this.toaster = Toaster.create()
   }
 
   mySubmit(e) {
@@ -25,6 +28,11 @@ class MainLogin extends Component {
         this.setState({isAnonuser: true})
       }
       else {
+        this.toaster.show({
+          className: "toaster-fail",
+          timeout: 1000,
+          message: "ID나 Password가 올바르지 않습니다"
+        })
         document.getElementById("1").focus()
       }
     })

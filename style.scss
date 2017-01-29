@@ -178,8 +178,14 @@ span.pt-icon::before {
   font-family: $font;
   color: #FFFFFF;
 }
+.toaster-fail {
+  background-color: $flame;
+  font-family: $font;
+  color: #FFFFFF;
+}
 .comment-delete-toaster {
   background-color: $greenery;
+  font-size: 0.75em;
   font-family: $font;
   color: #FFFFFF;
 }
