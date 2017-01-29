@@ -324,9 +324,9 @@ export const getFilesByURL = (url) => dispatch => {
 }*/
 
 export const putFiles = (body) => dispatch => {
-  dispatch(pushFiles(body))
   return fetch(host + '/upload/' + body.name, headers("PUT", body)).then( res => {
     return res.json().then( json => {
+      dispatch(pushFiles(json))
       return json
     })
   })

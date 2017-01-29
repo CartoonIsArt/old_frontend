@@ -127,10 +127,13 @@ class CreateRock extends Component {
             {
             this.state.youtube ?
             <div className="card-block">
-              <iframe width="560" height="315" 
-                src={`https://www.youtube.com/embed/${this.state.youtube}`}
-                frameBorder="0" 
-                allowFullScreen></iframe>
+              <div className="read-rock-youtube-wrapper">
+                <iframe
+                  className="read-rock-youtube"
+                  src={`https://www.youtube.com/embed/${this.state.youtube}`}
+                  frameBorder="0" 
+                  allowFullScreen></iframe>
+              </div>
             </div>
             :
             this.state.isUploaded ? 

@@ -9,6 +9,8 @@ import {getFiles} from './actions'
 import {connect} from 'react-redux'
 import {Popover, PopoverInteractionKind, Position } from '@blueprintjs/core'
 import moment from 'moment'
+import {youtube_parser} from './Youtube'
+import ProfileImage from './ProfileImage'
 
 
 
@@ -62,19 +64,23 @@ class Pebble extends Component {
     return (
     <div>
       <div className="card pebble">
-        <div className="card-img-top read-rock-image-wrapper">
-          {
-          this.props.files
-          .filter(e => (this.props.imgId == null ? false : e.id == this.props.imgId))
-          .map(file => (
-            <img 
-              key={file.id}
-              className="img-fluid rock-image" 
-              src={`http://cia.kw.ac.kr:3001/api/uploads/${file.file_hash}`} 
-              alt={file.name} />
-          ))
-          }
-        </div>
+        {
+        this.props.imgId ?
+        <ProfileImage
+          wrapperClass="card-img-top read-rock-image-wrapper"
+          imgClass="img-fluid rock-image"
+          imgId={this.props.imgId}
+        />
+        :
+        youtube_parser(this.props.text) &&
+          <div className="read-rock-youtube-wrapper">
+            <iframe
+              className="read-rock-youtube"
+              src={`https://www.youtube.com/embed/${youtube_parser(this.props.text)}`}
+              frameBorder="0"
+              allowFullScreen> </iframe>
+          </div>
+        }
         <div className="card-block">
             <p className="card-text pebble-text"> {this.props.text} </p>
           <p className="card-text text-xs-right"> <small className="text-muted"> 
@@ -97,6 +103,15 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   getFiles
 })
-
+/*
+          this.props.files
+          .filter(e => (this.props.imgId == null ? false : e.id == this.props.imgId))
+          .map(file => (
+            <img 
+              key={file.id}
+              className="img-fluid rock-image" 
+              src={`http://cia.kw.ac.kr:3001/api/uploads/${file.file_hash}`} 
+              alt={file.name} />
+*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pebble)

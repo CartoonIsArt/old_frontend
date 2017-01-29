@@ -4,11 +4,13 @@ import {whoami, postRocks, putFiles} from './actions'
 import DropzoneComponent from 'react-dropzone-component'
 import {Intent, Alert, Toaster, IToaster, EditableText} from '@blueprintjs/core'
 import ProfileImage from './ProfileImage'
+import {youtube_parser} from './Youtube'
 
 class CreatePebbles extends Component {
   constructor(props)  {
     super(props)
     this.state = {
+      youtube: "",
       author: this.props.me.id,
       parent_rock: this.props.rockId,
       isUploaded: false,
@@ -57,6 +59,7 @@ class CreatePebbles extends Component {
     })
   }
   textChange(text) {
+    !this.state.isUploaded && this.setState({youtube: youtube_parser(text)})
     this.setState({text})
   }
   imageClicked() {
@@ -91,7 +94,19 @@ class CreatePebbles extends Component {
           <h6> 정말 지워요? </h6>
         </Alert>
         <form>
-        {this.state.isUploaded ?
+        {
+        this.state.youtube ?
+        <div className="card-block">
+          <div className="read-rock-youtube-wrapper">
+            <iframe
+              className="read-rock-youtube"
+              src={`https://www.youtube.com/embed/${this.state.youtube}`}
+              frameBorder="0"
+              allowFullScreen> </iframe>
+          </div>
+        </div>
+        :
+        this.state.isUploaded ?
         <div onClick={() => this.imageClicked()}>
           <ProfileImage
             wrapperClass="card-img-top read-rock-image-wrapper create-rock-img-wrapper"

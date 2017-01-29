@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import MyNavBar from './MyNavBar'
 import ProfileImage from './ProfileImage'
 import DropzoneComponent from 'react-dropzone-component'
+import {renderToStaticMarkup}  from 'react-dom/server'
 
 class Profile extends Component {
   constructor(props) {
@@ -12,14 +13,27 @@ class Profile extends Component {
       profile_image: "",
       last_name: "",
       password: "",
+      passwordConfirm: "",
       phone_number: "",
       isPasswordAlert: false,
       isPasswordConfirmAlert: false,
       isPhonenumberAlert: false,
     }
     this.props.whoami()
-    .then(res =>  this.setState({id: this.props.me.id})
+    .then(res =>  this.setState({
+      id: this.props.me.id,
+      last_name: this.props.me.last_name
+      })
     )
+    this.djsConfig = {
+      previewTemplate: renderToStaticMarkup(<div> </div>),
+      addRemoveLinks: false,
+      autoProcessQueue: false,
+      acceptedFiles: 'image/*',
+      maxFiles: 1,
+      dictDefaultMessage: 'aaa',
+      maxFilesize: 2,           //MiB
+    }
     this.componentConfig = {
       postUrl: '#'
     }
@@ -27,10 +41,23 @@ class Profile extends Component {
   handleSubmit(e) {
     e.preventDefault()
     e.stopPropagation();
+    if(this.state.password === "" ) {
+      this.setState({isPasswordAlert: true})
+      return;
+    }
+    if(this.state.passwordConfirm === "" ) {
+      this.setState({isPasswordConfirmAlert: true})
+      return;
+    }
     (this.state.password !== "" && !this.state.isPasswordAlert) && 
       !this.isPasswordConfirmAlert && 
       (this.state.phone_number === "" || !this.state.isPhonenumberAlert) && 
       this.props.patchMembers(this.state)
+      .then(res => {
+        if(res === 200){
+          this.context.router.push('/brand')
+        }
+      })
   }
   onPasswordBlur(event) {
     var password = event.target.value.toString()
@@ -49,6 +76,7 @@ class Profile extends Component {
     }
     else {
       this.setState({isPasswordConfirmAlert: false})
+      this.setState({passwordConfirm})
     }
   }
 
@@ -67,7 +95,7 @@ class Profile extends Component {
     this.props.putFiles(file)
     .then(json => {
       if(json !== 500) {
-        this.setState({profile_image: json.url})
+        this.setState({profile_image: json.id})
       }
     })
   }
@@ -91,15 +119,21 @@ class Profile extends Component {
             <div className="card-block">
               <div className="club-join-form">
                 <strong> 프로필 이미지 </strong>
-              <ProfileImage
-                imgClass="my-account-profile-image"
-                wrapperClass="my-account-profile-image-wrapper"
-                imgId={this.props.me.profile_image}
-              />
-              <DropzoneComponent
-                config={config}
-                eventHandlers={eventHandlers}
-                djsconfig={djsConfig} />
+              { this.props.me.profile_image &&
+              <div className="my-account-profile-image-wrapper">
+                <ProfileImage
+                  imgClass="my-account-profile-image"
+                  wrapperClass=""
+                  imgId={this.state.profile_image !== "" ? this.state.profile_image :
+                    this.props.me.profile_image}
+                />
+                <DropzoneComponent
+                  className="my-account-dropzone"
+                  config={config}
+                  eventHandlers={eventHandlers}
+                  djsConfig={djsConfig} />
+               </div>
+               }
               </div>
               <div className="club-join-form">
                 <strong> 이름 </strong>
@@ -120,7 +154,7 @@ class Profile extends Component {
                 />
                 {this.state.isPasswordAlert &&
                   <span role="alert" className="club-join-input-error"> <small>
-                    NoNoNo </small> </span>}
+                    입력해주세요(8자이상) </small> </span>}
               </div>
               <div className="club-join-form">
                 <strong> 비밀번호(재입력) </strong>
@@ -130,7 +164,7 @@ class Profile extends Component {
                 />
                 {this.state.isPasswordConfirmAlert &&
                   <span role="alert" className="club-join-input-error"> <small>
-                    NoNoNo </small> </span>}
+                    비밀번호가 다릅니다 </small> </span>}
               </div>
               <div className="club-join-form">
                 <strong> 연락처 </strong>
@@ -148,7 +182,7 @@ class Profile extends Component {
             </div>   {/*-- card-block */}
             <div className="card-block text-xs-right">
               <button type="submit" className="pt-button pt-intent-primary create-rock-sumbit">
-                수정
+                수정(로그아웃됩니다)
               </button>
             </div>
           </div>

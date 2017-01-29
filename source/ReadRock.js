@@ -118,29 +118,33 @@ class ReadRock extends Component{
               </h4>
               <h6 className="rock-subtitle card-subtitle text-muted"> {this.state.authorName} </h6>
             </div>
-            <div className="card-img-top read-rock-image-wrapper">
             {
               rock.attached_image ?
               this.props.files
               .filter(e => (
                 e.id == rock.attached_image))
               .map(e => (
+            <div 
+              key={e.id}
+              className="card-img-top read-rock-image-wrapper">
                 <img 
-                  key={e.id}
                   className="img-fluid rock-image"
                   src={`http://cia.kw.ac.kr:3001/api/uploads/${e.file_hash}`}
                   alt={e.filename}
-                />))
+                />
+            </div>))
               :
               youtube_parser(rock.text) &&
+              <div 
+              className="read-rock-youtube-wrapper">
               <iframe
-                width="100%"
-                className="img-fluid rock-image"
+                className="read-rock-youtube"
                 src={`https://www.youtube.com/embed/${youtube_parser(rock.text)}`}
                 frameBorder="0" 
                 allowFullScreen></iframe>
+              </div>
             }
-            </div>
+
          <div className="card-block">
                   <p className="card-text rock-text"> {rock.text} </p>
           </div>

@@ -37,7 +37,7 @@ class MainLogin extends Component {
     this.setState({password: event.target.value})
   }
   componentDidMount() {
-    document.body.style.backgroundImage="url('/static/background.jpg')"
+    document.body.style.backgroundImage="url('http://cia.kw.ac.kr:3001/static/background.jpg')"
   }
   componentWillUnmount() {
     document.body.style.backgroundImage="url('')"

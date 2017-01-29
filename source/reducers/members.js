@@ -16,9 +16,7 @@ export const members = (state=[], action) => {
       ...state
     ].map(e => {
       if (e.id == action.members.id) {
-        e.isAnon = action.members.isAnon
-        e.isContributer = action.members.isContributer
-        e.isActive = action.members.isActive
+        return action.members
       }
       return e
     })
