@@ -92,7 +92,7 @@ class Signin extends Component {
             <h3> 인증 ㄱㄷ </h3>
           </div> :
           <div className="club-join-container">
-            <h1 className="club-join-title"> 너, CIA에 들어와라! </h1>
+            <h1 className="club-join-title"> CIA 계정 만들기 </h1>
             <div className="club-join-content">
               <div className="club-join">
                 <div className="club-join-form"> {/* ----------name  */ }
@@ -163,7 +163,6 @@ class Signin extends Component {
                 </div>
                </div>
                <div className="club-side-content">
-                 동아리 소개
                </div>
              </div>
            </div>
