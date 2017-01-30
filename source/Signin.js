@@ -18,7 +18,7 @@ class Signin extends Component {
       isPasswordAlert: false,
       isPasswordConfirmAlert: false,
       isPhonenumberAlert: false,
-      isSuccess: true,
+      isSuccess: false,
       username: '',
       last_name: '',
       password: '',
@@ -130,7 +130,7 @@ class Signin extends Component {
                       onBlur={this.onNameBlur.bind(this)} />
                   {this.state.isNameAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      이 칸은 비어있으면 안 됨 </small> </span> }
+                      이 칸은 비울 수 없습니다 </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- username  */ }
                   <strong> 아이디 </strong>
@@ -140,13 +140,13 @@ class Signin extends Component {
                       onBlur={this.onUsernameBlur.bind(this)} />
                   {this.state.isUsernameAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      이 칸은 비어있으면 안 됨 </small> </span> }
+                      이 칸은 비울 수 없습니다 </small> </span> }
                   {this.state.isUsernameAlreadyExistAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      이미 누가 그거 함 </small> </span> }
+                      중복된 아이디입니다 </small> </span> }
                   {this.state.isUsernameTooShortAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      너무 짧음(6자 이상) </small> </span> }
+                      너무 짧습니다(6자 이상) </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- password  */ }
                   <strong> 패스워드 </strong>
@@ -155,7 +155,7 @@ class Signin extends Component {
                       onBlur={this.onPasswordBlur.bind(this)} />
                   {this.state.isPasswordAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      너무 짧음 (8자이상) </small> </span> }
+                      너무 짧습니다 (8자이상) </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- password confirm */ }
                   <strong> 패스워드 (재입력) </strong>
@@ -164,17 +164,17 @@ class Signin extends Component {
                       onBlur={this.onPasswordConfirmBlur.bind(this)} />
                   {this.state.isPasswordConfirmAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                       불일치</small> </span> }
+                       일치하지 않습니다</small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- phone number */ }
-                  <strong> 폰 번호 </strong>
+                  <strong> 연락처 </strong>
                   <input type="text"
                     className={this.state.isPhonenumberAlert ? "club-join-input pt-input pt-intent-danger" : "club-join-input pt-input .modifier" }
                     placeholder="010-0000-0000"
                     onBlur={this.onPhonenumberBlur.bind(this)} />
                   {this.state.isPhonenumberAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
-                      ㅈㅅ 다시입력하셈(010-0000-0000) </small> </span> }
+                      인식할 수 없는 번호입니다(010-0000-0000) </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- birthday confirm */ }
                   <strong> 생일 </strong>

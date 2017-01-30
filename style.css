@@ -143,7 +143,41 @@ span.pt-icon::before {
 .pt-input {
   height: 37px; }
 
+.brand-content-wrapper {
+  width: 1150px;
+  height: 530px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 16px;
+  padding-right: 16px; }
+
+.brand-picture-right {
+  float: right;
+  height: 100%;
+  width: 530px; }
+
+.brand-picture-left {
+  float: right;
+  height: 100%;
+  width: 530px; }
+
+.brand-text-right {
+  float: right;
+  height: 100%;
+  width: 530px; }
+
+.brand-content::after {
+  content: "";
+  display: block;
+  clear: both; }
+
+.brand-picture-left {
+  float: left;
+  height: 100%;
+  width: 530px; }
+
 .club-join-input-error {
+  display: block;
   color: #F2552C; }
 
 .brand-wrapper {
@@ -600,7 +634,6 @@ body {
   height: 100vh;
   border: dashed red;
   background-color: #efefef;
-  margin-top: 16px;
   padding-top: 40px;
   padding-right: 44px;
   padding-left: 44px; }
@@ -879,7 +912,7 @@ thead {
   /* fallback */ }
 
 tbody td, thead th {
-  width: 25%;
+  width: 20%;
   float: left; }
 
 /*# sourceMappingURL=style.css.map */

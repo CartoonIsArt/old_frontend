@@ -19,14 +19,12 @@ export default class Brand extends Component {
           leftsideContent={(<div> picture 1 </div>)}
         />
         <BrandContent
-          wrapperClass="brand-content-wrapper-2"
           rightsideClass="brand-picture-right"
           rightsideContent={(<div> picture 2 </div>)}
           leftsideClass="brand-text-left"
           leftsideContent={(<div> message 2</div>)}
         />
         <BrandContent
-          wrapperClass="brand-content-wrapper-3"
           rightsideClass="brand-text-right"
           rightsideContent={(<div> message 3 </div>)}
           leftsideClass="brand-picture-left"
