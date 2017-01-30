@@ -103,6 +103,7 @@ class ManagePane extends Component {
                     key={member.id}
                     memberId={member.id}
                     name={member.last_name}
+                    birthday={member.date_of_birth}
                     isActive={member.isActive}
                     isContributer={member.isContributer}
                     isAnon={member.isAnon}

@@ -3,6 +3,7 @@ import {Switch, Toaster, Intent} from '@blueprintjs/core'
 import {getMembers, patchMembers} from './actions'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
+import moment from 'moment'
 
 
 class ManageRow extends Component {
@@ -64,7 +65,14 @@ class ManageRow extends Component {
     return (
       <tr>
         <td> 
-          {this.props.name} 
+          <div>
+            {this.props.name} 
+          </div>
+          <div className="text-muted">
+          <small>
+            {moment(this.props.birthday).format('YYYY-MM-DD')} 
+          </small>
+          </div>
         </td>
         <td>
           <Switch 
