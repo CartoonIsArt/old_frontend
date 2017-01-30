@@ -11,6 +11,7 @@ import {Popover, PopoverInteractionKind, Position } from '@blueprintjs/core'
 import moment from 'moment'
 import {youtube_parser} from './Youtube'
 import ProfileImage from './ProfileImage'
+import Linkify from 'react-linkify'
 
 
 
@@ -82,7 +83,9 @@ class Pebble extends Component {
           </div>
         }
         <div className="card-block">
+          <Linkify properties={{target: "_blank"}}>
             <p className="card-text pebble-text"> {this.props.text} </p>
+          </Linkify>
           <p className="card-text text-xs-right"> <small className="text-muted"> 
           </small> </p>
         </div>

@@ -11,6 +11,7 @@ import MyNavBar from './MyNavBar'
 import Star from './Star'
 import moment from 'moment'
 import {youtube_parser} from './Youtube'
+import Linkify from 'react-linkify'
 
 
 class ReadRock extends Component{
@@ -146,8 +147,12 @@ class ReadRock extends Component{
             }
 
          <div className="card-block">
-                  <p className="card-text rock-text"> {rock.text} </p>
-          </div>
+           <p className="card-text rock-text"> 
+           <Linkify properties={{target: "_blank"}}>
+            {rock.text} 
+           </Linkify>
+           </p>
+         </div>
          </div>
           <Pebbles rockId={rock.id} />
           <div className="card pebble">

@@ -6,6 +6,7 @@ import ProfileImage from './ProfileImage'
 import CreateReComment from './CreateReComment'
 import ReComments from './ReComments'
 import moment from 'moment'
+import Linkify from 'react-linkify'
 
 class Comment extends Component {
   constructor(props) {
@@ -64,7 +65,9 @@ class Comment extends Component {
           imgClass="comment-profile"  />
         <div className={this.props.isModal ? "card-outline-secondary modal-comment-text-block" : "card-outline-secondary comment-text-block"}>
           <p className="rock-text">
+          <Linkify properties={{target: '_blank'}}>
             {this.props.text}
+          </Linkify>
           </p>
             <div className="comment-title">
             <span className="comment-author text-muted"> {e.last_name} </span>

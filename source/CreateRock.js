@@ -77,7 +77,7 @@ class CreateRock extends Component {
     this.setState({title: text})
   }
   textChange(text) {
-    !this.state.isUploaded && this.setState({youtube: this.youtube_parser(text)})
+    !this.state.isUploaded && this.setState({youtube: youtube_parser(text)})
     this.setState({text})
   }
   imageClicked() {

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {patchMembers, whoami} from './actions'
 import MyNavBar from './MyNavBar'
 import {NonIdealState, Switch} from '@blueprintjs/core'
+import Linkify from 'react-linkify'
 
 class Activations extends Component {
   constructor(props) {
@@ -33,7 +34,10 @@ class Activations extends Component {
                       "pt-icon pt-icon-pulse"}> 
                   </span>
                 </div>
+                
+                <Linkify>
                 <h4> 활동인구 등록 </h4>
+                </Linkify>
                 {this.props.me.isActive &&
                 <div className="pt-non-ideal-state-description">
                   {description}

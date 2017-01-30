@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {deleteComments, getMembers} from './actions'
 import ProfileImage from './ProfileImage'
 import moment from 'moment'
+import Linkify from 'react-linkify'
 
 class ReComment extends Component {
   constructor(props) {
@@ -60,7 +61,9 @@ class ReComment extends Component {
         imgClass="recomment-profile" />
       <div className={this.props.isModal ? "modal-recomment-text-block" : "recomment-text-block"}>
         <div className="rock-text">
+        <Linkify properties={{target: "_blank"}}>
           {this.props.text}
+        </Linkify>
         </div>
         <div className="recomment-title">
           <span className="text-muted"> {e.last_name} </span>
