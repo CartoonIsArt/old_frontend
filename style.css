@@ -7,6 +7,16 @@
 span > a {
   color: #004B8D; }
 
+span > a:hover {
+  text-decoration: underline; }
+
+a {
+  color: #182026; }
+
+a:hover {
+  color: #182026;
+  text-decoration: none; }
+
 div.filepicker {
   border: none;
   background-color: transparent; }

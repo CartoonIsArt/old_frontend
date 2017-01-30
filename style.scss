@@ -25,8 +25,16 @@ $lapis-blue: #004B8D;
 span > a {
   color: $lapis-blue;
 }
-
-
+span > a:hover {
+  text-decoration: underline;
+}
+a {
+  color: $soft-black;
+}
+a:hover {
+  color: $soft-black;
+  text-decoration: none;
+}
 div.filepicker {
     border: none;
     background-color: rgba(0, 0, 0, 0);
