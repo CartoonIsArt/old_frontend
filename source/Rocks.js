@@ -116,6 +116,7 @@ class Rocks extends Component {
             imgId={rock.attached_image}
             onLoad={() => this.forceUpdate()}
             text={rock.text}
+            touchedDate={rock.touch_date}
             createdDate={rock.write_date} />
             </div>
             ))

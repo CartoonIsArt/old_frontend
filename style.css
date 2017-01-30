@@ -466,7 +466,12 @@ body {
   overflow: hidden;
   float: left; }
 
+.rocks-summary {
+  padding-bottom: 10px !important; }
+
 .rocks-profile-wrapper {
+  margin-top: 4px;
+  margin-left: 2px;
   border-radius: 2px;
   display: inline-block;
   height: 36px;
@@ -480,7 +485,8 @@ body {
   height: 48px;
   width: 48px;
   overflow: hidden;
-  float: left; }
+  float: left;
+  margin-top: 4px; }
 
 .recomment {
   margin-top: 12px;
@@ -491,7 +497,9 @@ body {
   height: 32px;
   width: 32px;
   overflow: hidden;
-  float: left; }
+  float: left;
+  border-radius: 2px;
+  margin-top: 4px; }
 
 .create-comment-profile-wrapper {
   display: inline-block;
@@ -501,7 +509,7 @@ body {
 
 .rocks-profile-block {
   width: 148px;
-  margin-left: 4px;
+  margin-left: 8px;
   min-height: 36px;
   display: inline-block;
   font-family: "Nanum Gothic", sans-serif; }

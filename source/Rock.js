@@ -46,7 +46,7 @@ class Rock extends Component {
             </div>
         }
         <div className="card-row"> </div>
-        <div className="card-block">
+        <div className="card-block rocks-summary">
           <h6 className="card-text rocks-text"> 
           {
             this.props.members
@@ -62,11 +62,13 @@ class Rock extends Component {
                   <small> {e.last_name} </small>
                 </div>
                 <div className="rocks-profile-time text-muted">
+                  <span className="pt-icon pt-icon-history pt-icon-small">
                   <small> 
-                    { moment() - moment(this.props.createdDate) < 24 * 60 * 60 * 1000 ? 
-                      moment(this.props.createdDate).locale('ko').fromNow() :
-                      moment(this.props.createdDate).locale('ko').format('MMMM Do LT')}
+                    { moment() - moment(this.props.touchedDate) < 24 * 60 * 60 * 1000 ? 
+                      moment(this.props.touchedDate).locale('ko').fromNow() :
+                      moment(this.props.touchedDate).locale('ko').format('MMMM Do LT')}
                   </small>
+                  </span>
                 </div>
               </div>
             </div>

@@ -15,7 +15,7 @@ class MetaCIA extends Component {
   }
   render() {
     const logoutRock = (
-    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <div className="card main-rock rock-read" onClick={this.logout.bind(this)}>
         <div className="card-block">
           <h4 className="card-title rocks-title"> 로그아웃 </h4>
@@ -31,7 +31,7 @@ class MetaCIA extends Component {
     </div>
     )
     const lawRock = (
-    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to='/laws'>
       <div className="card main-rock rock-read">
         <div className="card-block">
@@ -49,7 +49,7 @@ class MetaCIA extends Component {
     </div>
     )
     const myAccountRock = (
-    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to="/profile">
       <div className="card main-rock rock-read">
         <div className="card-block">
@@ -67,7 +67,7 @@ class MetaCIA extends Component {
     </div>
     )
     const donateRock = (
-    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to='/donations'>
       <div className="card main-rock rock-read text-center">
         <div className="card-block">
@@ -87,7 +87,7 @@ class MetaCIA extends Component {
     </div>
     )
     const activateRock = (
-    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to='/activations'>
       <div className="card main-rock rock-read text-center">
         <div className="card-block">
@@ -107,7 +107,7 @@ class MetaCIA extends Component {
     </div>
     )
     const bugbountRock = (
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <Link to='/bugbount'>
         <div className="card main-rock rock-read text-center">
           <div className="card-block">
@@ -125,7 +125,7 @@ class MetaCIA extends Component {
       </div>
     )
     const manageRock = (
-      <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <Link to='/users'>
         <div className="card main-rock rock-read text-center">
           <div className="card-block">
