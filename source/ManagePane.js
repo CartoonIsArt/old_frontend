@@ -2,9 +2,8 @@ import React, {Component} from 'react'
 import MyNavBar from './MyNavBar'
 import ManageRow from './ManageRow'
 import {connect} from 'react-redux'
-import {getAllMembers} from './actions'
+import {sortMembers, getAllMembers} from './actions'
 import {Tooltip, Position} from '@blueprintjs/core'
-import {sort} from 'timsort'
 import sortBy from 'sort-by'
 
 class ManagePane extends Component {
@@ -21,16 +20,43 @@ class ManagePane extends Component {
     .then( () => {
       this.setState({users: this.props.members})
     })
+    this.toggleObject = {
+      name: false,
+      active: false,
+      contributer: false,
+      anon: false,
+      graduate: false,
+    }
   }
   sortByName() {
+    this.toggleObject.name ?
+    this.props.sortMembers((a, b) => a.last_name > b.last_name ? 1 : -1) :
+    this.props.sortMembers((a, b) => a.last_name < b.last_name ? 1 : -1) 
+    this.toggleObject.name = !this.toggleObject.name
   }
   sortByActive() {
+    this.toggleObject.active ?
+    this.props.sortMembers((a, b) => a.isActive ? 1 : -1) :
+    this.props.sortMembers((a, b) => !a.isActive ? 1 : -1)
+    this.toggleObject.active = !this.toggleObject.active
   }
   sortByContributer() {
+    this.toggleObject.contributer ?
+    this.props.sortMembers((a, b) => a.isContributer ? 1 : -1) :
+    this.props.sortMembers((a, b) => !a.isContributer ? 1 : -1)
+    this.toggleObject.contributer = !this.toggleObject.contributer
   }
   sortByAnon() {
+    this.toggleObject.anon ? 
+    this.props.sortMembers((a, b) => a.isAnon ? 1 : -1) :
+    this.props.sortMembers((a, b) => !a.isAnon ? 1 : -1)
+    this.toggleObject.anon = !this.toggleObject.anon
   }
   sortByGraduate() {
+    this.toggleObject.graduate ?
+    this.props.sortMembers((a, b) => a.isGraduate ? 1 : -1) :
+    this.props.sortMembers((a, b) => !a.isGraduate ? 1 : -1)
+    this.toggleObject.graduate = !this.toggleObject.graduate
   }
   render() {
     return (
@@ -44,11 +70,11 @@ class ManagePane extends Component {
                 <tr>
                   <th onClick={this.sortByName.bind(this)}>
                   이름
-                  <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                   </th>
                   <th onClick={this.sortByActive.bind(this)}>
                   활동인구
-                  <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                   </th>
                   <th onClick={this.sortByContributer.bind(this)}>
                     <Tooltip
@@ -56,17 +82,17 @@ class ManagePane extends Component {
                       position={Position.BOTTOM}>
                       <span>
                         후원자
-                      <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                      <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                       </span>
                     </Tooltip>
                   </th>
                   <th onClick={this.sortByAnon.bind(this)}>
                   가입 승인
-                  <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                   </th>
                   <th onClick={this.sortByGraduate.bind(this)}>
                   졸업
-                  <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                   </th>
                 </tr>
               </thead>
@@ -102,6 +128,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = ({
+  sortMembers,
   getAllMembers
 })
 

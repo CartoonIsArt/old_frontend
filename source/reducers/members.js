@@ -1,4 +1,5 @@
 import {createStore} from 'redux'
+import {sort} from 'timsort'
 
 export const members = (state=[], action) => {
   switch(action.type) {
@@ -39,6 +40,10 @@ export const members = (state=[], action) => {
         res = res.concat([e])
       }
     })
+    return res
+  case 'SORT_MEMBERS':
+    res = [...state]
+    sort(res, action.members)
     return res
   default:
     return state
