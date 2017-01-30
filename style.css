@@ -919,6 +919,7 @@ thead {
   /* fallback */ }
 
 tbody td, thead th {
+  cursor: pointer;
   width: 20%;
   float: left; }
 

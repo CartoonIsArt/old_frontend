@@ -10,6 +10,7 @@ import thumbs from './thumbs'
 import rossetastone from './rossetastone'
 import tag from './tag'
 import me from './me'
+import meta from './meta'
 import cursor from './cursor'
 
 const rootReducer = combineReducers({
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   rossetastone,
   tag,
   me,
+  meta,
   cursor,
 })
 

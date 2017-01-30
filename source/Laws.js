@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import MyNavBar from './MyNavBar'
+import {connect} from 'react-redux'
+import {getMeta} from './actions'
 
-export default class Laws extends Component {
+class Laws extends Component {
   constructor(props) {
     super(props)
+    this.props.getMeta()
   }
   render() {
     return (
@@ -13,7 +16,13 @@ export default class Laws extends Component {
           <div className="create-rock card">
             <div className="card-block">
               <h4 className="card-title"> 회칙 </h4>
-              <h6 className="card-text"> 1조 </h6>
+              <p className="rock-text">
+              {
+                this.props.meta
+                .filter(e => e.name === 'law')
+                .map(e => e.value)
+              }
+              </p>
             </div>
           </div>
         </div> 
@@ -21,3 +30,15 @@ export default class Laws extends Component {
     )
   }
 }
+
+Laws.contextTypes = {
+  router: React.PropTypes.object
+}
+const mapStateToProps = state => ({
+  meta: state.meta
+})
+const mapDispatchToProps = ({
+  getMeta
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Laws)

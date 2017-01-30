@@ -1,3 +1,6 @@
+export const CREATE_META = 'CREATE_META'
+
+
 export const CREATE_ROCKS = 'CREATE_ROCKS'
 export const PUSH_ROCKS = 'PUSH_ROCKS'
 export const PUSH_ROCK = 'PUSH_ROCK'
@@ -52,6 +55,8 @@ export const REMOVE_ME = 'REMOVE_ME'
 
 export const CREATE_CURSOR = 'CREATE_CURSOR'
 export const REMOVE_CURSOR = 'REMOVE_CURSOR'
+
+export const createMeta = meta => ({type: CREATE_META, meta})
 
 export const createRocks = rocks => ({type: CREATE_ROCKS, rocks})
 export const deletePushRocks = rocks => ({type: DELETE_PUSH_ROCKS, rocks})
@@ -237,6 +242,13 @@ export const getRocksBySearch = (keyword) => dispatch => {
     console.log(s);
     return 500
   })
+}
+
+export const getMeta = () => dispatch => {
+  return fetch(host + '/meta/', headers("GET"))
+  .then(res => res.json()
+    .then(json => dispatch(createMeta(json)))
+  )
 }
 
 export const getRocks = (id = 1) => dispatch => {
