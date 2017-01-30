@@ -1,4 +1,5 @@
 import {createStore} from 'redux'
+import {sort} from 'timsort'
 
 export const members = (state=[], action) => {
   switch(action.type) {
@@ -16,7 +17,10 @@ export const members = (state=[], action) => {
       ...state
     ].map(e => {
       if (e.id == action.members.id) {
-        return action.members
+        if(action.members.isActive !== undefined) {e.isActive = action.members.isActive}
+        if(action.members.isContributer !== undefined) {e.isContributer = action.members.isContributer}
+        if(action.members.isAnon !== undefined) {e.isAnon = action.members.isAnon}
+        if(action.members.isGraduate !== undefined) {e.isGraduate = action.members.isGraduate}
       }
       return e
     })
@@ -36,6 +40,10 @@ export const members = (state=[], action) => {
         res = res.concat([e])
       }
     })
+    return res
+  case 'SORT_MEMBERS':
+    res = [...state]
+    sort(res, action.members)
     return res
   default:
     return state

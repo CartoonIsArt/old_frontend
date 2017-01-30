@@ -19,6 +19,7 @@ export const PUSH_MEMBERS = 'PUSH_MEMBERS'
 export const MODIFY_MEMBERS = 'MODIFY_MEMBERS'
 export const UPDATE_MEMBERS = 'UPDATE_MEMBERS'
 export const REMOVE_MEMBERS = 'DELETE_MEMBERS'
+export const SORT_MEMBERS = 'SORT_MEMBERS'
 
 export const PUSH_CHIMEBELLS = 'PUSH_CHIMEBELLS'
 export const UPDATE_CHIMEBELLS = 'UPDATE_CHIMEBELLS'
@@ -73,6 +74,7 @@ export const pushMembers = members => ({type: PUSH_MEMBERS, members})
 export const modifyMembers = members => ({type: MODIFY_MEMBERS, members})
 export const updateMembers = members => ({type: UPDATE_MEMBERS, members})
 export const removeMembers = members => ({type: REMOVE_MEMBERS, members})
+export const sortingMembers = members => ({type: SORT_MEMBERS, members})
 
 export const createChimebells = chimebells => ({type: CREATE_CHIMEBELLS, chimebells})
 export const pushChimebells = chimebells => ({type: PUSH_CHIMEBELLS, chimebells})
@@ -447,6 +449,10 @@ export const deleteMembers = (id) => dispatch => {
     getMembers(id)
     return 500
   });
+}
+
+export const sortMembers = func => dispatch => {
+  dispatch(sortingMembers(func))
 }
 
 export const getChimebells = (id = 1) => dispatch => {
