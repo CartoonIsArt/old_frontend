@@ -8,81 +8,52 @@ import {connect} from 'react-redux'
 class ManageRow extends Component {
   constructor(props) {
     super(props)
+    this.toggleSuccess = {
+      className: "toaster-success",
+      timeout: 1500,
+      message: "변경됨"
+    }
+    this.toggleFail = {
+      className: "toaster-fail",
+      timeout: 1500,
+      message: "실패"
+    }
+  }
+  fetchToggle(data) {
+    this.props.patchMembers(data)
+    .then( res => {
+      if (res === 200) {
+        this.toaster.show(this.toggleSuccess)
+      }
+      else {
+        this.toaster.show(this.toggleFail)
+        this.props.getMembers(this.props.memberId)
+      }
+    })
   }
 
   toggleActive (event) {
-    this.props.patchMembers({
+    this.fetchToggle({
       isActive: !this.props.isActive,
-      isContributer: this.props.isContributer,
-      isAnon: this.props.isAnon,
       id: this.props.memberId
-    })
-    .then( res => {
-      if (res === 200) {
-        this.toaster.show({
-          className: "manage-toggle-toaster-success",
-          timeout: 1500,
-          message: "변경됨"
-        })
-      }
-      else {
-        this.toaster.show({
-          className: "manage-toggle-toaster-fail",
-          timeout: 1500,
-          message: "실패"
-        })
-        this.props.getMembers(this.props.memberId)
-      }
     })
   }
   toggleContributer (event) {
-    this.props.patchMembers({
-      isActive: this.props.isActive,
+    this.fetchToggle({
       isContributer: !this.props.isContributer,
-      isAnon: this.props.isAnon,
       id: this.props.memberId
-    })
-    .then( res => {
-      if (res === 200) {
-        this.toaster.show({
-          className: "manage-toggle-toaster-success",
-          timeout: 1500,
-          message: "변경됨"
-        })
-      }
-      else {
-        this.toaster.show({
-          className: "manage-toggle-toaster-fail",
-          timeout: 1500,
-          message: "실패"
-        })
-        this.props.getMembers(this.props.memberId)
-      }
     })
   }
   toggleAnon (event) {
-    this.props.patchMembers({
-      isActive: this.props.isActive,
-      isContributer: this.props.isContributer,
+    this.fetchToggle({
       isAnon: !this.props.isAnon,
       id: this.props.memberId
     })
-    .then( res => {
-      if (res === 200) {
-        this.toaster.show({
-          className: "manage-toggle-toaster-success",
-          timeout: 1500,
-          message: "변경됨"
-        })
-      }
-      else {
-        this.toaster.show({
-          className: "manage-toggle-toaster-fail",
-          timeout: 1500,
-          message: "실패"
-        })
-        this.props.getMembers(this.props.memberId)
-      }
+  }
+  toggleGraduate (event) {
+    this.fetchToggle({
+      isGraduate: !this.props.isGraduate,
+      id: this.props.memberId
     })
   }
   componentWillMount() {
@@ -92,7 +63,9 @@ class ManageRow extends Component {
   render() {
     return (
       <tr>
-        <td> {this.props.name} </td>
+        <td> 
+          {this.props.name} 
+        </td>
         <td>
           <Switch 
             checked={this.props.isActive}
@@ -109,6 +82,12 @@ class ManageRow extends Component {
           <Switch 
             checked={!this.props.isAnon}
             onChange={this.toggleAnon.bind(this)}
+          />
+        </td>
+        <td>
+          <Switch 
+            checked={this.props.isGraduate}
+            onChange={this.toggleGraduate.bind(this)}
           />
         </td>
       </tr>

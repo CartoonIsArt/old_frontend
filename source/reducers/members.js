@@ -16,7 +16,10 @@ export const members = (state=[], action) => {
       ...state
     ].map(e => {
       if (e.id == action.members.id) {
-        return action.members
+        if(action.members.isActive !== undefined) {e.isActive = action.members.isActive}
+        if(action.members.isContributer !== undefined) {e.isContributer = action.members.isContributer}
+        if(action.members.isAnon !== undefined) {e.isAnon = action.members.isAnon}
+        if(action.members.isGraduate !== undefined) {e.isGraduate = action.members.isGraduate}
       }
       return e
     })

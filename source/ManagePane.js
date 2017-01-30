@@ -22,85 +22,15 @@ class ManagePane extends Component {
       this.setState({users: this.props.members})
     })
   }
-  pureSort(arr, cmpf) {
-    var res = [...arr]
-    sort(res, cmpf)
-    return res
-  }
   sortByName() {
-    if(this.state.nameAtoZ) {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.last_name > b.last_name ? 1 : a.last_name === b.last_name ? 0 : -1))
-      })
-    }
-    else {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.last_name < b.last_name ? 1 : a.last_name === b.last_name ? 0 : -1))
-      })
-    }
-    this.setState({nameAtoZ: !this.state.nameAtoZ})
-  }
-  sortByName() {
-    if(this.state.nameAtoZ) {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.last_name > b.last_name ? 1 : a.last_name === b.last_name ? 0 : -1))
-      })
-    }
-    else {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.last_name < b.last_name ? 1 : a.last_name === b.last_name ? 0 : -1))
-      })
-    }
-    this.setState({nameAtoZ: !this.state.nameAtoZ})
   }
   sortByActive() {
-    if(this.state.activeFirst) {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.isActive ? 1 : -1))
-      })
-    }
-    else {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          !a.isActive ? 1 : -1))
-      })
-    }
-    this.setState({nameAtoZ: !this.state.activeFirst})
   }
   sortByContributer() {
-    if(this.state.isContributer) {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.isContributer ? 1 : -1))
-      })
-    }
-    else {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          !a.isContributer ? 1 : -1))
-      })
-    }
-    this.setState({isContributer: !this.state.isContributer})
   }
   sortByAnon() {
-    if(this.state.isAnon) {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          !a.isAnon ? 1 : -1))
-      })
-    }
-    else {
-      this.setState({
-        users: this.pureSort(this.state.users, (a, b) => (
-          a.isAnon ? 1 : -1))
-      })
-    }
-    this.setState({isAnon: !this.state.isAnon})
+  }
+  sortByGraduate() {
   }
   render() {
     return (
@@ -116,7 +46,8 @@ class ManagePane extends Component {
                   이름
                   <span className="pt-icon pt-icon-double-caret-vertical"> </span>
                   </th>
-                  <th onClick={this.sortByActive.bind(this)}>활동인구
+                  <th onClick={this.sortByActive.bind(this)}>
+                  활동인구
                   <span className="pt-icon pt-icon-double-caret-vertical"> </span>
                   </th>
                   <th onClick={this.sortByContributer.bind(this)}>
@@ -133,6 +64,10 @@ class ManagePane extends Component {
                   가입 승인
                   <span className="pt-icon pt-icon-double-caret-vertical"> </span>
                   </th>
+                  <th onClick={this.sortByGraduate.bind(this)}>
+                  졸업
+                  <span className="pt-icon pt-icon-double-caret-vertical"> </span>
+                  </th>
                 </tr>
               </thead>
                 <tbody>
@@ -145,6 +80,7 @@ class ManagePane extends Component {
                     isActive={member.isActive}
                     isContributer={member.isContributer}
                     isAnon={member.isAnon}
+                    isGraduate={member.isGraduate}
                   />
                 ))}
                 </tbody>
