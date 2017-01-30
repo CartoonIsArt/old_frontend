@@ -147,11 +147,10 @@ class MetaCIA extends Component {
         <MyNavBar />
         <div className="container main-rocks">
           <Masonry>
-            {activateRock}
-            {manageRock}
+            {this.props.me.isGraduate ? donateRock : activateRock}
+            {this.props.me.is_staff && manageRock}
             {bugbountRock}
             {lawRock}
-            {donateRock}
             {myAccountRock}
             {logoutRock}
           </Masonry>
