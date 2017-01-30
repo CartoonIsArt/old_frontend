@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+$color-main: #ff8900;
 $margin-default:15vw;
 $global-content-width:70vw;
 $transition-delay: 0.1s;
@@ -38,8 +39,17 @@ h4 {
 span.pt-icon::before {
   margin-right: 0.3rem;
 }
+.image-muted {
+  filter: grayscale(100%) !important;
+}
+.transition-3s{
+  transition: all 3s;
+}
 .dz-message {
   display: none !important;
+}
+.main-color {
+  color: $color-main !important;
 }
 .read-rock-youtube-wrapper {
   position: relative;

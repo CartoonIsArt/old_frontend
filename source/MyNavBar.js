@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import {Link} from 'react-router';
 import {Menu, MenuItem, MenuDivider, Popover, PopoverInteractionKind, Position } from '@blueprintjs/core'
 import {connect } from 'react-redux'
-import {logout, getRocksBySearch} from './actions'
+import {whoami, logout, getRocksBySearch} from './actions'
 import Notifications from './Notifications'
 
 class MyNavBar extends Component {
@@ -12,6 +12,7 @@ class MyNavBar extends Component {
       isSearchClicked: false
     }
     this.logout = this.logout.bind(this)
+    this.props.whoami()
   }
   logout() {
     this.props.logout()
@@ -52,7 +53,9 @@ class MyNavBar extends Component {
         <div className="container">
           <span className="nav-logo">
             <Link to='/'>
-              <img src='http://cia.kw.ac.kr:3001/api/uploads/logo.png' style={{width: '80px'}}/>
+              <img src='http://cia.kw.ac.kr:3001/api/uploads/logo.png' style={{width: '80px'}}
+                className={!this.props.me.isActive && "image-muted"}
+              />
             </Link>
           </span>
         <div className="pt-navbar-group pt-align-right">
@@ -78,9 +81,11 @@ MyNavBar.contextTypes = {
 }
 
 const mapStateToProps = state => ({
+  me: state.me
 })
 
 const mapDispatchToProps = ({
+  whoami,
   logout,
   getRocksBySearch
 })

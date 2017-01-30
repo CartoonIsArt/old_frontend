@@ -20,8 +20,17 @@ h4 {
 span.pt-icon::before {
   margin-right: 0.3rem; }
 
+.image-muted {
+  filter: grayscale(100%) !important; }
+
+.transition-3s {
+  transition: all 3s; }
+
 .dz-message {
   display: none !important; }
+
+.main-color {
+  color: #ff8900 !important; }
 
 .read-rock-youtube-wrapper {
   position: relative;
