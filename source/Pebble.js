@@ -83,9 +83,11 @@ class Pebble extends Component {
           </div>
         }
         <div className="card-block">
+          <p className="card-text pebble-text"> 
           <Linkify properties={{target: "_blank"}}>
-            <p className="card-text pebble-text"> {this.props.text} </p>
+            {this.props.text} 
           </Linkify>
+          </p>
           <p className="card-text text-xs-right"> <small className="text-muted"> 
           </small> </p>
         </div>

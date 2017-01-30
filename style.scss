@@ -22,13 +22,11 @@ $lapis-blue: #004B8D;
 	margin: 0px;
 	border: 0px;
 }
+span > a {
+  color: $lapis-blue;
+}
 
-a {
-  color: $soft-black !important;
-}
-a:hover {
-  text-decoration: none !important;
-}
+
 div.filepicker {
     border: none;
     background-color: rgba(0, 0, 0, 0);
