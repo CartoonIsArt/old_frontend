@@ -7,6 +7,7 @@ import {logout} from './actions'
 import {Link} from 'react-router'
 
 class MetaCIA extends Component {
+
   logout() {
     this.props.logout()
     .then( () => {
