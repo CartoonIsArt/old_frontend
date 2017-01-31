@@ -39,11 +39,34 @@ div.filepicker {
     border: none;
     background-color: rgba(0, 0, 0, 0);
 }
-h4 {
-  font-size: 16px;
-}
 span.pt-icon::before {
   margin-right: 0.3rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5em;
+  font-family: $font !important;
+}
+.door {
+  height: 520px;
+  padding-left: 120px;
+}
+.tv {
+  padding-left: 120px;
+}
+.content-right {
+  padding-top: 160px;
+  padding-left: 600px;
+}
+.content-left {
+  padding-top: 160px;
+  padding-right: 600px;
+}
+.margin-left-right-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-center {
+  text-align: center;
 }
 .image-muted {
   filter: grayscale(100%) !important;
@@ -157,10 +180,11 @@ span.pt-icon::before {
   color: $soft-black !important;
 }
 .join-success {
-  height: 100%;
-  border: solid yellow;
-  background: aqua;
   text-align: center;
+  margin-top: 35vh;
+}
+.ads {
+  display: none;
 }
 .pt-popover-target {
   width: 100%;
@@ -170,11 +194,23 @@ span.pt-icon::before {
 }
 .brand-content-wrapper {
   width: 1150px;
-  height: 530px;
+  height: 663px;
   margin-right: auto;
   margin-left: auto;
   padding-left: 16px;
   padding-right: 16px;
+  padding-top: 60px;
+  position: relative;
+}
+.brand-content-wrapper-3 {
+  width: 1150px;
+  height: 480px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 60px;
+  position: relative;
 }
 .brand-picture-right {
   float: right;
@@ -433,6 +469,7 @@ span.pt-icon::before {
   font-family: inherit;
 }
 body {
+    line-height: 1.5em;
     font-family: $font;
     background-color: white;
     background-repeat: no-repeat;
@@ -441,6 +478,11 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+}
+
+.brand-bottom-image {
+  position: absolute;
+  bottom: 0;
 }
 
 .comment-title{
@@ -518,6 +560,19 @@ body {
 .recomment {
   margin-top: 12px;
   padding-left: 58px;
+}
+.back-gray {
+  background: #f9f9f9;
+}
+.back-white {
+  background: white;
+}
+.back-aliceblue {
+  background: aliceblue;
+}
+
+.books {
+  width: 600px;
 }
 .recomment-profile-wrapper {
     display: inline-block;
@@ -681,8 +736,7 @@ body {
   width: 100%;
   min-height: 800px;
   height: 100vh;
-  border: dashed red; 
-  background-color: #efefef;
+  background-color: white;
   padding-top: 40px;
   padding-right: 44px;
   padding-left: 44px;
@@ -714,15 +768,12 @@ body {
   padding: 25px 25px 25px 25px;
   display: block;
   float: right;
-  border: dotted blue;
   width: 362px;
 }
 .club-side-content {
   display: block;
   margin: 0 420px 0 0;
-  border: dotted yellow;
   height: 595.5px;
-  background-color: beige;
   text-align: center;
 }
 .club-join-title {
@@ -953,6 +1004,9 @@ body {
   }
   .container {
     width: 1170px;
+  }
+  .ads {
+    display: block;
   }
 }
 

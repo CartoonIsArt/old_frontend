@@ -69,7 +69,7 @@ class MetaCIA extends Component {
     const donateRock = (
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to='/donations'>
-      <div className="card main-rock rock-read text-center">
+      <div className="card main-rock rock-read ">
         <div className="card-block">
           <h4 className="card-title rocks-title"> 선배님  </h4>
           <h4 className="card-title rocks-title">  CIA를 </h4>
@@ -89,7 +89,7 @@ class MetaCIA extends Component {
     const activateRock = (
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
     <Link to='/activations'>
-      <div className="card main-rock rock-read text-center">
+      <div className="card main-rock rock-read ">
         <div className="card-block">
           <h4 className="card-title rocks-title"> 활동인구는  </h4>
           <h4 className="card-title rocks-title">  언제나 </h4>
@@ -109,7 +109,7 @@ class MetaCIA extends Component {
     const bugbountRock = (
       <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <Link to='/bugbount'>
-        <div className="card main-rock rock-read text-center">
+        <div className="card main-rock rock-read ">
           <div className="card-block">
             <h4 className="card-title rocks-title"> 모던 동게  </h4>
           </div>
@@ -127,7 +127,7 @@ class MetaCIA extends Component {
     const manageRock = (
       <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <Link to='/users'>
-        <div className="card main-rock rock-read text-center">
+        <div className="card main-rock rock-read ">
           <div className="card-block">
             <h4 className="card-title rocks-title"> 회원 리스트  </h4>
           </div>

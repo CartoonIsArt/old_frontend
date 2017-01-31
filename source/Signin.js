@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import DayPicker, {DateUtils} from "react-day-picker"
-import {Toaster, Radio, RadioGroup, Switch} from "@blueprintjs/core"
+import {InputGroup, NonIdealState, Toaster, Radio, RadioGroup, Switch} from "@blueprintjs/core"
 import {DateInput} from '@blueprintjs/datetime'
 import 'moment/locale/ko'
 import MomentLocaleUtils from 'react-day-picker/moment'
@@ -112,15 +112,19 @@ class Signin extends Component {
   }
 
   render() {
+    const description = <span className="text-muted"> 하루 내에 당신의 계정이 만들어집니다 </span>
     return (
       <div className="club-page">
         { this.state.isSuccess ? 
           <div className="container join-success">
-            <h3> 가입 ㅊㅊ </h3>
-            <h3> 인증 ㄱㄷ </h3>
+            <NonIdealState
+              visual="confirm"
+              title="신청되었습니다"
+              description={description}
+            />
           </div> :
           <div className="club-join-container">
-            <h1 className="club-join-title"> CIA 계정 만들기 </h1>
+            <h1 className="club-join-title"> CIA 가입하기 </h1>
             <div className="club-join-content">
               <div className="club-join">
                 <div className="club-join-form"> {/* ----------name  */ }
@@ -198,6 +202,7 @@ class Signin extends Component {
                 </div>
                </div>
                <div className="club-side-content">
+                <img src="http://cia.kw.ac.kr:3001/static/rmt.png" height="595.5px"/>
                </div>
              </div>
            </div>
