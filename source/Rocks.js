@@ -66,10 +66,15 @@ class Rocks extends Component {
   }
 
   rockClick(modalRockId) {
-    this.setState({modalRockId})
-    this.setState({isModalOn: true})
-    document.body.style.overflow='hidden'
-    history.pushState('', '', '/rocks/' + modalRockId)
+    if(window.innerWidth < 800) {
+      this.context.router.push('/rocks/' + modalRockId)
+    }
+    else {
+      this.setState({modalRockId})
+      this.setState({isModalOn: true})
+      document.body.style.overflow='hidden'
+      history.pushState('', '', '/rocks/' + modalRockId)
+    }
   }
   closeModal() {
     this.setState({isModalOn: false})
