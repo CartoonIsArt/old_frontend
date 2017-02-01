@@ -4,3 +4,4 @@ node_modules/
 *core
 *.swo
 *.swp
+bundle.js
