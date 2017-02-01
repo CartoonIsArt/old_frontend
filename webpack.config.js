@@ -1,4 +1,5 @@
 var NyanProgressPlugin = require('nyan-progress-webpack-plugin');
+var webpack = require('webpack')
 
 module.exports = {
   entry: [
@@ -29,6 +30,12 @@ module.exports = {
   },
   plugins: [
     new NyanProgressPlugin(),
+    new webpack.DefinePlugin({
+        'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   devServer: {
     historyApiFallback: true,
