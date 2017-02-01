@@ -51,11 +51,11 @@ export default class Brand extends Component {
           <div className="brand-content-wrapper-3">
             <div className="content-right">
               <h2>
-                전 세계 고객들과 연결됩니다.
+                분기 애니메이션을 최고화질로
               </h2>
               <h6 className="text-muted">
-                고객이 어디에 있든 간편하게 결제가 가능합니다. <br /> 
-                고객은 페이팔은 물론, 신용카드나 직불카드로 결제할 수 있습니다.
+                애니메이션 감상에 최적화된 스피커와 디스플레이가 비치되어있습니다. <br /> 
+                당신의 덕질을 위해 최고의 시설을 보장합니다.
               </h6>
             </div>
             <div className="brand-bottom-image">

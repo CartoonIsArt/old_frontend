@@ -18,7 +18,7 @@ class ProfileImage extends Component {
         <div key={e.id}>
           <img 
             className={this.props.imgClass}
-            src={`http://cia.kw.ac.kr:3001/api/uploads/${e.file_hash}`}
+            src={`http://cia.kw.ac.kr:3001/media/${e.file_hash}`}
             alt={e.filename} />
         </div>))
       }

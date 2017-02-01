@@ -130,7 +130,7 @@ class ReadRock extends Component{
               className="card-img-top read-rock-image-wrapper">
                 <img 
                   className="img-fluid rock-image"
-                  src={`http://cia.kw.ac.kr:3001/api/uploads/${e.file_hash}`}
+                  src={`http://cia.kw.ac.kr:3001/media/${e.file_hash}`}
                   alt={e.filename}
                 />
             </div>))
