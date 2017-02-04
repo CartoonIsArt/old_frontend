@@ -69,9 +69,14 @@ class ManageRow extends Component {
             {this.props.name} 
           </div>
           <div className="text-muted">
-          <small>
-            {moment(this.props.birthday).format('YYYY-MM-DD')} 
-          </small>
+            <small>
+              {moment(this.props.birthday).format('YYYY-MM-DD')} 
+            </small>
+          </div>
+          <div className="text-muted">
+            <small>
+              {this.props.phonenumber}
+            </small>
           </div>
         </td>
         <td>

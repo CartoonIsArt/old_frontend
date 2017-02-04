@@ -1,5 +1,5 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://cia.kw.ac.kr/static/nanumgothic.css);
+@import url(https://cia.kw.ac.kr/static/notosanskr.css);
 * {
   margin: 0px;
   border: 0px; }
@@ -701,7 +701,7 @@ body {
   min-height: 800px;
   height: 100vh;
   background-color: white;
-  padding-top: 40px;
+  padding-top: 32px;
   padding-right: 44px;
   padding-left: 44px; }
 
@@ -892,7 +892,7 @@ body {
     text-align: left; }
 
   .club-page {
-    min-height: 600px; }
+    min-height: 620px; }
 
   .club-join-container {
     max-width: 320px;

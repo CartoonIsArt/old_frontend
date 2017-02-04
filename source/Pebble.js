@@ -108,15 +108,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   getFiles
 })
-/*
-          this.props.files
-          .filter(e => (this.props.imgId == null ? false : e.id == this.props.imgId))
-          .map(file => (
-            <img 
-              key={file.id}
-              className="img-fluid rock-image" 
-              src={`http://cia.kw.ac.kr:3001/api/uploads/${file.file_hash}`} 
-              alt={file.name} />
-*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pebble)

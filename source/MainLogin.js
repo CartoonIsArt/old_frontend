@@ -3,6 +3,7 @@ import {connect } from 'react-redux'
 import {login} from './actions'
 import {Link} from 'react-router';
 import {Alert, Toaster, IToaster, Intent} from '@blueprintjs/core'
+import {host} from './Configure'
 
 class MainLogin extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class MainLogin extends Component {
     this.setState({password: event.target.value})
   }
   componentDidMount() {
-    document.body.style.backgroundImage="url('http://cia.kw.ac.kr:3001/static/background.jpg')"
+    document.body.style.backgroundImage=`url('${host}/static/background.jpg')`
   }
   componentWillUnmount() {
     document.body.style.backgroundImage="url('')"

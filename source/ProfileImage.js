@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getFiles} from './actions'
+import {host} from './Configure'
 
 class ProfileImage extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ProfileImage extends Component {
         <div key={e.id}>
           <img 
             className={this.props.imgClass}
-            src={`http://cia.kw.ac.kr:3001/media/${e.file_hash}`}
+            src={`${host}/media/${e.file_hash}`}
             alt={e.filename} />
         </div>))
       }

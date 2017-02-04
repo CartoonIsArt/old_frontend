@@ -4,6 +4,7 @@ import {Menu, MenuItem, MenuDivider, Popover, PopoverInteractionKind, Position }
 import {connect } from 'react-redux'
 import {whoami, logout, getRocksBySearch} from './actions'
 import Notifications from './Notifications'
+import {host} from './Configure'
 
 class MyNavBar extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class MyNavBar extends Component {
         <div className="container">
           <span className="nav-logo">
             <Link to='/'>
-              <img src='http://cia.kw.ac.kr:3001/media/logo.png' style={{width: '80px'}}
+              <img src={`${host}/media/logo.png`} style={{width: '80px'}}
                 className={!this.props.me.isActive && "image-muted"}
               />
             </Link>

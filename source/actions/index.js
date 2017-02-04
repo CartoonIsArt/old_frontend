@@ -128,7 +128,7 @@ const getCookie = name => {
   return cookieValue
 }
 
-const host = 'http://cia.kw.ac.kr:3001/api'
+const host = 'https://cia.kw.ac.kr/api'
 const headers = (method, body) => {
   const token = getCookie('csrftoken')
   return {
@@ -197,7 +197,7 @@ export const whoami = () => dispatch => {
 }
 
 export const logout = () => dispatch => {
-    return fetch('http://cia.kw.ac.kr:3001/logout/', {
+    return fetch(host + '/logout/', {
       headers: {
         'Content-Type': 'application/json',
         'Content-Type': 'application/json',

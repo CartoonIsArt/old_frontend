@@ -3,6 +3,7 @@ import Landing from './Landing';
 import MainLogin from './MainLogin';
 import Signin from './Signin'
 import BrandContent from './BrandContent'
+import {host} from './Configure'
 
 export default class Brand extends Component {
   render() {
@@ -26,7 +27,7 @@ export default class Brand extends Component {
             <div className="brand-bottom-image">
               <img 
                 className="door"
-                src="http://cia.kw.ac.kr:3001/static/door.png"/>
+                src={`${host}/static/door.png`}/>
             </div>
           </div>
         </div>
@@ -43,7 +44,7 @@ export default class Brand extends Component {
             <div className="brand-bottom-image" style={{right:"0"}}>
               <img 
                 className="books"
-                src="http://cia.kw.ac.kr:3001/static/books.jpg"/>
+                src={`${host}/static/books.jpg`}/>
             </div>
           </div>
         </div>
@@ -62,7 +63,7 @@ export default class Brand extends Component {
               <img 
                 width="520px"
                 className="tv"
-                src="http://cia.kw.ac.kr:3001/static/tv_with_cia.jpg"/>
+                src={`${host}/static/tv_with_cia.jpg`}/>
             </div>
           </div>
         </div>

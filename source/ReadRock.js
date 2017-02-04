@@ -12,6 +12,7 @@ import Star from './Star'
 import moment from 'moment'
 import {youtube_parser} from './Youtube'
 import Linkify from 'react-linkify'
+import {host} from './Configure'
 
 
 class ReadRock extends Component{
@@ -130,7 +131,7 @@ class ReadRock extends Component{
               className="card-img-top read-rock-image-wrapper">
                 <img 
                   className="img-fluid rock-image"
-                  src={`http://cia.kw.ac.kr:3001/media/${e.file_hash}`}
+                  src={`${host}/media/${e.file_hash}`}
                   alt={e.filename}
                 />
             </div>))

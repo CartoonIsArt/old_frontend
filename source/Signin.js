@@ -6,6 +6,7 @@ import 'moment/locale/ko'
 import MomentLocaleUtils from 'react-day-picker/moment'
 import {connect} from 'react-redux'
 import {isExistUsername, signin} from './actions'
+import {host} from './Configure'
 
 class Signin extends Component {
   constructor(props) {
@@ -202,7 +203,7 @@ class Signin extends Component {
                 </div>
                </div>
                <div className="club-side-content">
-                <img src="http://cia.kw.ac.kr:3001/static/rmt.png" height="595.5px"/>
+                <img src={`${host}/static/rmt.png`} height="595.5px"/>
                </div>
              </div>
            </div>
