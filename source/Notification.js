@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import ProfileImage from './ProfileImage.js'
-import {getMembers, patchChimebellsConfirm} from './actions'
+import {getChimebellsByToMemberId, getMembers, patchChimebellsConfirm} from './actions'
 import moment from 'moment'
 
 
@@ -16,6 +16,7 @@ class Notification extends Component {
     this.context.router.push(this.props.refer)
     if (!this.props.isConfirm) {
       this.props.patchChimebellsConfirm(this.props.notiId)
+      .then( () => this.props.getChimebellsByToMemberId(this.props.me.id))
     }
   }
   render() {
@@ -59,10 +60,12 @@ Notification.contextTypes = {
 }
 
 const mapStateToProps = state => ({
+  me: state.me,
   members: state.members
 })
 const mapDispatchToProps = ({
   patchChimebellsConfirm,
+  getChimebellsByToMemberId,
   getMembers
 })
 
