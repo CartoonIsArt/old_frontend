@@ -1,5 +1,3 @@
-@import url(https://cia.kw.ac.kr/static/nanumgothic.css);
-@import url(https://cia.kw.ac.kr/static/notosanskr.css);
 * {
   margin: 0px;
   border: 0px; }
@@ -31,6 +29,9 @@ h1, h2, h3, h4, h5, h6 {
 .door {
   height: 520px;
   padding-left: 120px; }
+
+.list-group-item {
+  border-radius: 0 !important; }
 
 .tv {
   padding-left: 120px; }
@@ -553,6 +554,9 @@ body {
   float: left;
   border-radius: 2px;
   margin-top: 4px; }
+
+.create-comment {
+  border-top: none; }
 
 .create-comment-profile-wrapper {
   display: inline-block;

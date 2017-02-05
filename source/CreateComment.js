@@ -38,7 +38,7 @@ class CreateComment extends Component {
   render() {
     return (
       <div className="comments">
-        <div className="list-group-item">
+        <div className="list-group-item create-comment">
           <ProfileImage 
             imgId={this.props.me.profile_image}
             wrapperClass="comment-profile-wrapper"

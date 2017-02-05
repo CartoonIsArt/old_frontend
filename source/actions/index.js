@@ -128,7 +128,7 @@ const getCookie = name => {
   return cookieValue
 }
 
-const host = 'https://cia.kw.ac.kr/api'
+const host = 'http://cia.kw.ac.kr:523/api'
 const headers = (method, body) => {
   const token = getCookie('csrftoken')
   return {
