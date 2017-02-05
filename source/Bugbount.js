@@ -12,19 +12,24 @@ export default class Bugbount extends Component {
         <div className="container">
           <div className="create-rock card">
             <div className="card-block">
-              <h4 className="card-title"> 모던 동게 베타테스터를 환영합니다! </h4>
+              <h4 className="card-title"> 너를 위한 동게, 모-던 동게 </h4>
             </div>
             <div className="card-block">
-              <h5 className="card-text"> 1. '너'의 경험이 제일 중요합니다 </h5>
-              <h6 className="card-text"> '어, 이거 이상한데?', '흠, 이건 좀 불편하네.' 등 당신의 모든 경험을 이곳에 기록해주세요. </h6>
+              <img src="https://cia.kw.ac.kr/media/3bd0dc69-8aa6-49cb-8b6e-fa049ecad302.gif"
+                style={{maxWidth: "100%"}}
+              />
             </div>
             <div className="card-block">
-              <h5 className="card-text"> 2. '너'의 건의는 바로 반영됩니다 </h5>
-              <h6 className="card-text"> 건의한 내용은 수시로 검토되고 반영됩니다.  </h6>
+              <h5 className="card-text"> 1. 간편한 활동인구 신청 </h5>
+              <h6 className="card-text text-muted"> 그저 버튼 클릭 한 번으로 간편하게 활동인구 신청을 할 수 있습니다. </h6>
             </div>
             <div className="card-block">
-              <h5 className="card-text"> 3. 모던 동게에 '너'의 이름이 새겨집니다 </h5>
-              <h6 className="card-text"> 동아리를 위해 동게에 기여해준 당신을 영원히 기억합니다. </h6>
+              <h5 className="card-text"> 2. 빠른 속도 </h5>
+              <h6 className="card-text text-muted"> 데이터 요청 시 먼저 보여주고, 처리는 미루어 속도가 크게 향상되었습니다. </h6>
+            </div>
+            <div className="card-block">
+              <h5 className="card-text"> 3. 안전한 통신 </h5>
+              <h6 className="card-text text-muted"> 당신의 모든 통신은 암호화됩니다. </h6>
             </div>
             <div className="card-block">
               <h5 className="card-text">  * 찾은 버그 </h5>

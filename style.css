@@ -853,6 +853,12 @@ body {
 
   .my-nav-input {
     width: calc(100vw - 200px); } }
+@media (min-width: 576px) {
+  .recomment-text-block {
+    width: calc(540px - 152px - 60px); }
+
+  .comment-text-block {
+    width: calc(540px - 152px); } }
 @media (min-width: 768px) {
   .card-columns {
     -webkit-column-count: 2;

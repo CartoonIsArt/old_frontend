@@ -75,9 +75,15 @@ class MainLogin extends Component {
             <input tabIndex="2" type="password" className="pt-input" placeholder="Password" 
               onChange={this.passwordChange} />
           </div>
-          <button type="submit" id="2" tabIndex="3" className="pt-button pt-large pt-intent-primary">Login</button>
+          <button type="submit" id="2" tabIndex="3" className="pt-button pt-large pt-intent-primary"> 로그인 </button>
         </div>
       </form>
+      <button className="pt-button pt-large pt-color-muted" style={{width: "100%"}}
+        onClick={() => window.scrollTo(0,document.body.scrollHeight) }
+        > 회원가입 </button>
+      <button className="pt-button pt-large pt-color-muted" style={{width: "100%"}}
+        onClick={() => document.location="http://128.134.57.197"}
+      > 구동게로 </button>
       </div>
     </div>
     );

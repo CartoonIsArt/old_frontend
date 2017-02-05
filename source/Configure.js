@@ -1,1 +1,1 @@
-export const host="http://cia.kw.ac.kr:523"
+export const host="https://cia.kw.ac.kr"

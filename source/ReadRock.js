@@ -105,7 +105,7 @@ class ReadRock extends Component{
               <h4 className="card-title"> {rock.title}
               {
                 <Popover 
-                  content={this.props.me.id == rock.author ? popCon : popConNotAuthor}
+                  content={this.props.me.id == rock.author || this.props.me.is_admin ? popCon : popConNotAuthor}
                   className="rock-title-more"
                   ineractionKind={PopoverInteractionKind.CLICK}
                   popoverClassName="pt-popover-content-sizing"

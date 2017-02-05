@@ -15,6 +15,22 @@ class MetaCIA extends Component {
     })
   }
   render() {
+    const oldRock = (
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
+      <div className="card main-rock rock-read" onClick={() => document.location="http://128.134.57.197"}>
+        <div className="card-block">
+          <h4 className="card-title rocks-title"> 구동게 </h4>
+        </div>
+        <div className="card-row"> </div>
+        <div className="card-block">
+          <h6 className="card-text rocks-text"> 
+            <span className="pt-icon pt-icon-history"> </span> 
+            {' '}구동게 바로가기
+          </h6>
+        </div>
+      </div>
+    </div>
+    )
     const logoutRock = (
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <div className="card main-rock rock-read" onClick={this.logout.bind(this)}>
@@ -118,7 +134,7 @@ class MetaCIA extends Component {
           <div className="card-block">
             <h6 className="card-text rocks-text"> 
               <span className="pt-icon pt-icon-highlight"> </span> 
-              {' '} 베타 테스트
+              {' '} 너의 CIA를 위한 SNS
             </h6>
           </div>
         </div>
@@ -153,6 +169,7 @@ class MetaCIA extends Component {
             {bugbountRock}
             {lawRock}
             {myAccountRock}
+            {oldRock}
             {logoutRock}
           </Masonry>
         </div>
