@@ -157,7 +157,7 @@ class ReadRock extends Component{
          </div>
           <Pebbles rockId={rock.id} />
           <div className="card pebble">
-            <div className="card-block">
+            <div className="card-block" style={{textAlign: "right"}}>
               <Star rockId={rock.id} />
               <p className="card-text text-xs-right"> <small className="text-muted"> 
                 {moment() - moment(rock.write_date) < 24 * 60 * 60 * 1000 ? moment(rock.write_date).locale('ko').fromNow() : moment(rock.write_date).locale('ko').format('LLL')}
