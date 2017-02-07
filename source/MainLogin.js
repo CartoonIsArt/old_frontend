@@ -22,7 +22,12 @@ class MainLogin extends Component {
   mySubmit(e) {
     this.props.login(this.state)
     .then(res => {
-      if (res === 201){
+      if (res === 200){
+        this.toaster.show({
+          className: "toaster-success",
+          timeout: 1000,
+          message: "환영합니다!"
+        })
         this.context.router.push('/')
       }
       else if (res === 401) {  // anon user

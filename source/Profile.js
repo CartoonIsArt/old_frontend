@@ -22,7 +22,9 @@ class Profile extends Component {
     this.props.whoami()
     .then(res =>  this.setState({
       id: this.props.me.id,
-      last_name: this.props.me.last_name
+      last_name: this.props.me.last_name,
+      phone_number: this.props.me.phone_number,
+      profile_image: this.props.me.profile_image
       })
     )
     this.djsConfig = {

@@ -174,7 +174,7 @@ export const login = body => dispatch => {
       method: "POST",
       body: JSON.stringify(body)
     }).then( res => {
-      if (res.status === 201) {
+      if (res.status === 200) {
         fetch(host + '/members/?username=' + body.username, headers("GET")).then(res => (
           res.json().then(json => {
             dispatch(createMe(json[0]))

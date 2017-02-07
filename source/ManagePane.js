@@ -28,6 +28,11 @@ class ManagePane extends Component {
       graduate: false,
     }
   }
+  cond(a, b) {
+    if(!(a ^ b)) return 0;
+    if(a && !b) return 1;
+    if(!a && b) return -1;
+  }
   sortByName() {
     this.toggleObject.name ?
     this.props.sortMembers((a, b) => a.last_name > b.last_name ? 1 : -1) :
@@ -36,26 +41,26 @@ class ManagePane extends Component {
   }
   sortByActive() {
     this.toggleObject.active ?
-    this.props.sortMembers((a, b) => a.isActive ? 1 : -1) :
-    this.props.sortMembers((a, b) => !a.isActive ? 1 : -1)
+    this.props.sortMembers((a, b) => this.cond(a.isActive, b.isActive)) :
+    this.props.sortMembers((a, b) => this.cond(b.isActive, a.isActive))
     this.toggleObject.active = !this.toggleObject.active
   }
   sortByContributer() {
     this.toggleObject.contributer ?
-    this.props.sortMembers((a, b) => a.isContributer ? 1 : -1) :
-    this.props.sortMembers((a, b) => !a.isContributer ? 1 : -1)
+    this.props.sortMembers((a, b) => this.cond(a.isContributer, b.isContributer)) :
+    this.props.sortMembers((a, b) => this.cond(b.isContributer, a.isContributer))
     this.toggleObject.contributer = !this.toggleObject.contributer
   }
   sortByAnon() {
     this.toggleObject.anon ? 
-    this.props.sortMembers((a, b) => a.isAnon ? 1 : -1) :
-    this.props.sortMembers((a, b) => !a.isAnon ? 1 : -1)
+    this.props.sortMembers((a, b) => this.cond(a.isAnon, b.isAnon)) :
+    this.props.sortMembers((a, b) => this.cond(b.isAnon, a.isAnon))
     this.toggleObject.anon = !this.toggleObject.anon
   }
   sortByGraduate() {
     this.toggleObject.graduate ?
-    this.props.sortMembers((a, b) => a.isGraduate ? 1 : -1) :
-    this.props.sortMembers((a, b) => !a.isGraduate ? 1 : -1)
+    this.props.sortMembers((a, b) => this.cond(a.isGraduate, b.isGraduate)) :
+    this.props.sortMembers((a, b) => this.cond(b.isGraduate, a.isGraduate))
     this.toggleObject.graduate = !this.toggleObject.graduate
   }
   render() {
@@ -79,6 +84,9 @@ class ManagePane extends Component {
                   <th onClick={this.sortByContributer.bind(this)}>
                     <Tooltip
                       content="정기적으로 CIA를 후원해주시는 선배님입니다. 사랑해요!"
+                      hoverOpenDelay={1}
+                      hoverCloseDelay={1}
+                      transitionDuration={0}
                       position={Position.BOTTOM}>
                       <span>
                         후원자
