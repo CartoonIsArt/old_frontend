@@ -13,7 +13,7 @@ import moment from 'moment'
 import {youtube_parser} from './Youtube'
 import Linkify from 'react-linkify'
 import {host} from './Configure'
-
+import Badge from './Badge'
 
 class ReadRock extends Component{
   constructor(props) {
@@ -23,6 +23,7 @@ class ReadRock extends Component{
       "authorId": "",
       "isCommentView": true,
       "isCreatePebble": false,
+      badges: []
     }
     this.myDelete = this.myDelete.bind(this)
     this.props.whoami()
@@ -42,7 +43,8 @@ class ReadRock extends Component{
       .then(json => {
         this.setState({
           authorName: json.last_name,
-          authorId: json.id
+          authorId: json.id,
+          badges: json.badges
         })
       })
     })
@@ -118,7 +120,11 @@ class ReadRock extends Component{
                 </Popover>
               }
               </h4>
-              <h6 className="rock-subtitle card-subtitle text-muted"> {this.state.authorName} </h6>
+              <h6 className="rock-subtitle card-subtitle text-muted"> 
+              {this.state.authorName}
+              {' '}
+              {this.state.badges.map( badge => <Badge key={badge} badgeId={badge} />) }
+              </h6>
             </div>
             {
               rock.attached_image ?
