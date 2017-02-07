@@ -5,6 +5,7 @@ import {getFiles, getMembers} from './actions'
 import ProfileImage from './ProfileImage'
 import moment from 'moment'
 import {youtube_parser} from './Youtube'
+import Badge from './Badge'
 
 class Rock extends Component {
   constructor(props) {
@@ -60,6 +61,9 @@ class Rock extends Component {
               <div className="rocks-profile-block">
                 <div className="rocks-profile-name text-softblack">
                   <small> {e.last_name} </small>
+                  {
+                  e.badges.map( badge => (<Badge key={badge} badgeId={badge} />))
+                  }
                 </div>
                 <div className="rocks-profile-time text-muted">
                   <span className="pt-icon pt-icon-history pt-icon-small">

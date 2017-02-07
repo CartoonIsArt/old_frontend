@@ -1,5 +1,7 @@
 export const CREATE_META = 'CREATE_META'
 
+export const CREATE_BADGES = 'CREATE_BADGES'
+export const UPDATE_BADGES = 'UPDAGE_BADGES'
 
 export const CREATE_ROCKS = 'CREATE_ROCKS'
 export const PUSH_ROCKS = 'PUSH_ROCKS'
@@ -57,6 +59,9 @@ export const CREATE_CURSOR = 'CREATE_CURSOR'
 export const REMOVE_CURSOR = 'REMOVE_CURSOR'
 
 export const createMeta = meta => ({type: CREATE_META, meta})
+
+export const createBadges = badges => ({type: CREATE_BADGES, badges})
+export const updateBadges = badges => ({type: UPDATE_BADGES, badges})
 
 export const createRocks = rocks => ({type: CREATE_ROCKS, rocks})
 export const deletePushRocks = rocks => ({type: DELETE_PUSH_ROCKS, rocks})
@@ -213,6 +218,17 @@ export const logout = () => dispatch => {
       console.log(s);
     });
 }
+
+export const getBadges = id => dispatch => (
+  fetch(host + '/badges/' + id + '/', headers("GET"))
+  .then(res => (
+    res.json().then( json => {
+      dispatch(updateBadges(json))
+      return json
+    })
+  ))
+  .catch(s => console.log(s))
+)
 
 export const getIndexPageRocks = () => dispatch => {
   return fetch(host + '/rocks/?has_parent=False', headers("GET"))

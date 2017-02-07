@@ -9,11 +9,13 @@ import comments from './comments'
 import thumbs from './thumbs'
 import rossetastone from './rossetastone'
 import tag from './tag'
+import badges from './badges'
 import me from './me'
 import meta from './meta'
 import cursor from './cursor'
 
 const rootReducer = combineReducers({
+  badges,
   files,
   questions,
   members,
