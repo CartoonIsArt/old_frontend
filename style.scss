@@ -43,6 +43,9 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5em;
   font-family: $font !important;
 }
+.badge-niagara {
+  background-color: $niagara
+}
 .door {
   height: 520px;
   padding-left: 120px;
@@ -550,7 +553,6 @@ body {
 }
 .comment-profile-wrapper {
     border-radius: 4px;
-    display: inline-block;
     height: 48px;
     width: 48px;
     overflow: hidden;

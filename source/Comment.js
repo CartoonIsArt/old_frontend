@@ -58,10 +58,10 @@ class Comment extends Component {
       this.props.members
       .filter(e => e.id == this.props.author)
       .map( e => (
-      <div key={`"com_"${this.props.commentId}${e.id}`} className="list-group-item">
+      <div key={`"com_"${this.props.commentId}${e.id}`} className="list-group-item d-flex flex-row">
         <ProfileImage
           imgId={e.profile_image}
-          wrapperClass="comment-profile-wrapper"
+          wrapperClass="comment-profile-wrapper align-self-start"
           imgClass="comment-profile"  />
         <div className={this.props.isModal ? "card-outline-secondary modal-comment-text-block" : "card-outline-secondary comment-text-block"}>
           <p className="rock-text">

@@ -12,15 +12,16 @@ class Badge extends Component {
     this.props.getBadges(this.props.badgeId)
     .then(badge => this.setState({badge}))
     this.colorMap = {
-      1: "badge-primary"
+      1: "badge-primary",
+      2: "badge-niagara"
     }
   }
   render(){
-    const colorClass = "badge badge-pill " + this.colorMap[this.state.badge.color]
+    const colorClass = "badge " + this.colorMap[this.state.badge.color]
     const description = this.state.badge.description
     return (
       <span className={colorClass}>
-        {description && description}
+        {description}
       </span>
     )
   }

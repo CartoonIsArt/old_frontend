@@ -38,10 +38,10 @@ class CreateComment extends Component {
   render() {
     return (
       <div className="comments">
-        <div className="list-group-item create-comment">
+        <div className="list-group-item create-comment d-flex flex-row">
           <ProfileImage 
             imgId={this.props.me.profile_image}
-            wrapperClass="comment-profile-wrapper"
+            wrapperClass="comment-profile-wrapper align-self-start"
             imgClass="comment-profile"/>
           <div className={this.props.isModal ? "card-outline-secondary modal-comment-text-block" : "card-outline-secondary comment-text-block"}>
           <form>
