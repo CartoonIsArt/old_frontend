@@ -155,14 +155,16 @@ class Profile extends Component {
                 <strong> 학과(부) </strong>
                 <input type="text"
                   className="club-join-input pt-input .modifier"
-                  onChange={department => this.setState({department})}
+                  onChange={e => this.setState({department: e.target.value})}
+                  defaultValue={this.props.me.department}
                   placeholder={this.props.me.department}
                   />
               </div>
               <div className="club-join-form"> {/* ---------- phone number */ }
                 <strong> 학번 </strong>
                 <input type="text"
-                  onChange={student_number => this.setState({student_number})}
+                  onChange={e => this.setState({student_number: e.target.value})}
+                  defaultValue={this.props.me.student_number}
                   placeholder={this.props.me.student_number}
                   className="club-join-input pt-input .modifier"
                   />
