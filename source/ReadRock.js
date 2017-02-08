@@ -23,6 +23,7 @@ class ReadRock extends Component{
       "authorId": "",
       "isCommentView": true,
       "isCreatePebble": false,
+      text: "",
       badges: []
     }
     this.myDelete = this.myDelete.bind(this)
@@ -36,6 +37,7 @@ class ReadRock extends Component{
     })
     this.props.getRocks(this.props.params.id)
     .then( json => {
+      this.setState({text: json.text})
       json.attached_image && 
       this.props.files.filter(e => e.id == json.attached_image).length === 0 &&
       this.props.getFiles(json.attached_image)

@@ -20,10 +20,14 @@ class Signin extends Component {
       isPasswordConfirmAlert: false,
       isPhonenumberAlert: false,
       isSuccess: false,
+      isStudentNumberAlert: false,
+      isDepartmentAlert: false,
       username: '',
       last_name: '',
       password: '',
       phone_number: '',
+      department: "",
+      student_number: 0,
       date_of_birth: new Date(new Date().setFullYear(new Date().getFullYear() - 20)),
     }
   }
@@ -70,6 +74,26 @@ class Signin extends Component {
     }
   }
 
+  onStudentNumberBlur(event) {
+    var student_number = event.target.value.toString()
+    if(student_number.match(/^[0-9]{10}$/)){
+      this.setState({isStudentNumberAlert: false})
+      this.setState({student_number})
+    }
+    else {
+      this.setState({isStudentNumberAlert: true})
+    }
+  }
+  onDepartmentBlur(event) {
+    var department = event.target.value.toString()
+    if(!department.trim()){
+      this.setState({isDepartmentAlert: true})
+    }
+    else {
+      this.setState({isDepartmentAlert: false})
+      this.setState({department})
+    }
+  }
   onPhonenumberBlur(event) {
     var phone_number = event.target.value.toString()
     if(phone_number.match(/^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/)){
@@ -170,6 +194,24 @@ class Signin extends Component {
                   {this.state.isPasswordConfirmAlert && 
                     <span role="alert" className="club-join-input-error"> <small>
                        일치하지 않습니다</small> </span> }
+                </div>
+                <div className="club-join-form"> {/* ---------- phone number */ }
+                  <strong> 학과(부) </strong>
+                  <input type="text"
+                    className={this.state.isDepartmentAlert ? "club-join-input pt-input pt-intent-danger" : "club-join-input pt-input .modifier" }
+                    onBlur={this.onDepartmentBlur.bind(this)} />
+                  {this.state.isDepartmentAlert && 
+                    <span role="alert" className="club-join-input-error"> <small>
+                      이 칸은 비울 수 없습니다 </small> </span> }
+                </div>
+                <div className="club-join-form"> {/* ---------- phone number */ }
+                  <strong> 학번 </strong>
+                  <input type="text"
+                    className={this.state.isStudentNumberAlert ? "club-join-input pt-input pt-intent-danger" : "club-join-input pt-input .modifier" }
+                    onBlur={this.onStudentNumberBlur.bind(this)} />
+                  {this.state.isStudentNumberAlert && 
+                    <span role="alert" className="club-join-input-error"> <small>
+                      인식할 수 없는 학번입니다 </small> </span> }
                 </div>
                 <div className="club-join-form"> {/* ---------- phone number */ }
                   <strong> 연락처 </strong>

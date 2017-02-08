@@ -18,12 +18,16 @@ class Profile extends Component {
       isPasswordAlert: false,
       isPasswordConfirmAlert: false,
       isPhonenumberAlert: false,
+      department: "",
+      student_number: 0,
     }
     this.props.whoami()
     .then(res =>  this.setState({
       id: this.props.me.id,
       last_name: this.props.me.last_name,
       phone_number: this.props.me.phone_number,
+      department: this.props.me.department,
+      student_number: this.props.me.student_number,
       profile_image: this.props.me.profile_image
       })
     )
@@ -120,7 +124,7 @@ class Profile extends Component {
             </div>
             <div className="card-block">
               <div className="club-join-form">
-                <strong> 프로필 이미지 </strong>
+                <strong> 프로필 이미지(2MB) </strong>
               { this.props.me.profile_image &&
               <div className="my-account-profile-image-wrapper">
                 <ProfileImage
@@ -146,6 +150,22 @@ class Profile extends Component {
                   defaultValue={this.props.me.last_name}
                   onChange={e => this.setState({last_name: e.target.value})}
                 />
+              </div>
+              <div className="club-join-form"> {/* ---------- phone number */ }
+                <strong> 학과(부) </strong>
+                <input type="text"
+                  className="club-join-input pt-input .modifier"
+                  onChange={department => this.setState({department})}
+                  placeholder={this.props.me.department}
+                  />
+              </div>
+              <div className="club-join-form"> {/* ---------- phone number */ }
+                <strong> 학번 </strong>
+                <input type="text"
+                  onChange={student_number => this.setState({student_number})}
+                  placeholder={this.props.me.student_number}
+                  className="club-join-input pt-input .modifier"
+                  />
               </div>
               <div className="club-join-form">
                 <strong> 비밀번호 </strong>

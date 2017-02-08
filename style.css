@@ -707,7 +707,7 @@ body {
 
 .club-page {
   width: 100%;
-  min-height: 800px;
+  min-height: 1024px;
   height: 100vh;
   background-color: white;
   padding-top: 32px;
@@ -835,7 +835,8 @@ body {
 
 .rock-padding {
   padding-left: 4px;
-  padding-right: 4px; }
+  padding-right: 4px;
+  margin-bottom: 8px; }
 
 .rock {
   background: #efefef;

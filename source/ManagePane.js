@@ -117,6 +117,8 @@ class ManagePane extends Component {
                     isContributer={member.isContributer}
                     isAnon={member.isAnon}
                     isGraduate={member.isGraduate}
+                    studentNumber={member.student_number}
+                    department={member.department}
                   />
                 ))}
                 </tbody>

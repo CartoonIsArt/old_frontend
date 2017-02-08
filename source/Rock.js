@@ -20,7 +20,7 @@ class Rock extends Component {
   render() {
     return (
       <div className={!this.props.isRead ? "card main-rock rock-unread" : "card main-rock rock-read"}>
-        {
+        { //if has image
           this.props.imgId ?
           <ProfileImage
             wrapperClass="rock-image-wrapper"
@@ -40,7 +40,7 @@ class Rock extends Component {
             CIA
           </div>
         }
-        {
+        { //if has title
           this.props.title &&
             <div className="card-block">
               <h4 className="card-title rocks-title"> {this.props.title} </h4>
