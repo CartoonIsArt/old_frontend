@@ -77,9 +77,6 @@ class ReadRock extends Component{
       <div>
         <ul className="pt-menu">
           <li className="pt-menu-header"> <p> 이 글을  </p> </li>
-          <li className="pt-menu-item pt-icon-delete" > 
-            <p onClick={this.hate.bind(this)}> 싫어요 </p>
-          </li>
           <li className="pt-menu-item pt-icon-trash"> 
             <p onClick={this.props.isModal ? this.props.onDelete : this.myDelete}> 삭제 </p>
           </li>
@@ -90,7 +87,6 @@ class ReadRock extends Component{
       <div>
         <ul className="pt-menu">
           <li className="pt-menu-header"> <p> 이 글을  </p> </li>
-          <li className="pt-menu-item pt-icon-delete" > 싫어요 </li>
         </ul>
       </div>
     )
@@ -105,9 +101,10 @@ class ReadRock extends Component{
         .map(rock=>(
         <div key={`"read_"${rock.id}`} >
           <div className="read-rock card" style={this.props.isModal ? {display: "block"} : {marginTop: "56px"}}>
-            <div className="card-block">
-              <h4 className="card-title"> {rock.title}
+            <div className="card-block title-block">
+              <h5 className="card-title"> <strong> {rock.title} </strong>
               {
+                this.props.me.id == rock.author && 
                 <Popover 
                   content={this.props.me.id == rock.author || this.props.me.is_admin ? popCon : popConNotAuthor}
                   className="rock-title-more"
@@ -121,7 +118,7 @@ class ReadRock extends Component{
                   <span className="pt-icon-large pt-icon-more"> </span>  
                 </Popover>
               }
-              </h4>
+              </h5>
               <h6 className="rock-subtitle card-subtitle text-muted"> 
               {this.state.authorName}
               {' '}

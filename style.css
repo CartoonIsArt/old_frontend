@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5em;
   font-family: "Nanum Gothic", sans-serif !important; }
 
+.title-block {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
 .badge-niagara {
   background-color: #5484A4; }
 
@@ -89,10 +93,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   padding-left: 4px;
   padding-right: 4px; }
-
-.card-title {
-  font-weight: bold;
-  font-size: 20px; }
 
 .rock-modal {
   position: fixed;

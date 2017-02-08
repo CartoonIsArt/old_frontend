@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import MyNavBar from './MyNavBar'
-import {PopoverInteractionKind, Popover} from '@blueprintjs/core'
+import {Position, PopoverInteractionKind, Popover} from '@blueprintjs/core'
 import {connect} from 'react-redux'
 import {whoami, getChimebellsByToMemberId} from './actions'
 import Notification from './Notification'
@@ -38,7 +38,7 @@ class Notifications extends Component {
         className=""
         interactionKind={PopoverInteractionKind.CLICK}
         popoverClassName="pt-popover-content-sizing"
-        position={6}
+        position={Position.BOTTOM_RIGHT}
         transitionDuration={30}
         enforceFocus={false}
         autoFocus={false}

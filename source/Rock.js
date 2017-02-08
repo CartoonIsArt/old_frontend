@@ -43,7 +43,7 @@ class Rock extends Component {
         { //if has title
           this.props.title &&
             <div className="card-block">
-              <h4 className="card-title rocks-title"> {this.props.title} </h4>
+              <h5 className="card-title rocks-title"> {this.props.title} </h5>
             </div>
         }
         <div className="card-row"> </div>

@@ -19,11 +19,11 @@ class MetaCIA extends Component {
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <div className="card main-rock rock-read" onClick={() => document.location="http://128.134.57.197"}>
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 구동게 </h4>
+          <h5 className="card-title rocks-title"> 구동게 </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-history"> </span> 
             {' '}구동게 바로가기
           </h6>
@@ -35,11 +35,11 @@ class MetaCIA extends Component {
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <div className="card main-rock rock-read" onClick={this.logout.bind(this)}>
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 로그아웃 </h4>
+          <h5 className="card-title rocks-title"> 로그아웃 </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-log-out"> </span> 
             {' '}잘가요
           </h6>
@@ -52,11 +52,11 @@ class MetaCIA extends Component {
     <Link to='/laws'>
       <div className="card main-rock rock-read">
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 회칙 </h4>
+          <h5 className="card-title rocks-title"> 회칙 </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-book"> </span> 
             {' '} v.13
           </h6>
@@ -70,11 +70,11 @@ class MetaCIA extends Component {
     <Link to="/profile">
       <div className="card main-rock rock-read">
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 내정보 </h4>
+          <h5 className="card-title rocks-title"> 내정보 </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-person"> </span> 
             {' '} 바꾸기
           </h6>
@@ -88,13 +88,13 @@ class MetaCIA extends Component {
     <Link to='/donations'>
       <div className="card main-rock rock-read ">
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 선배님  </h4>
-          <h4 className="card-title rocks-title">  CIA를 </h4>
-          <h4 className="card-title rocks-title">  도와주세요 </h4>
+          <h5 className="card-title rocks-title"> 선배님  </h5>
+          <h5 className="card-title rocks-title">  CIA를 </h5>
+          <h5 className="card-title rocks-title">  도와주세요 </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-heart"> </span> 
             {' '} CIA에 따듯한 손길을
           </h6>
@@ -108,13 +108,13 @@ class MetaCIA extends Component {
     <Link to='/activations'>
       <div className="card main-rock rock-read ">
         <div className="card-block">
-          <h4 className="card-title rocks-title"> 활동인구는  </h4>
-          <h4 className="card-title rocks-title">  언제나 </h4>
-          <h4 className="card-title rocks-title">  환영이야! </h4>
+          <h5 className="card-title rocks-title"> 활동인구는  </h5>
+          <h5 className="card-title rocks-title">  언제나 </h5>
+          <h5 className="card-title rocks-title">  환영이야! </h5>
         </div>
         <div className="card-row"> </div>
         <div className="card-block">
-          <h6 className="card-text rocks-text"> 
+          <h6 className="card-text rocks-text text-muted"> 
             <span className="pt-icon pt-icon-hand"> </span> 
             {' '} 2017년 1학기 활동인구등록
           </h6>
@@ -128,11 +128,11 @@ class MetaCIA extends Component {
       <Link to='/bugbount'>
         <div className="card main-rock rock-read ">
           <div className="card-block">
-            <h4 className="card-title rocks-title"> 모던 동게  </h4>
+            <h5 className="card-title rocks-title"> 모던 동게  </h5>
           </div>
           <div className="card-row"> </div>
           <div className="card-block">
-            <h6 className="card-text rocks-text"> 
+            <h6 className="card-text rocks-text text-muted"> 
               <span className="pt-icon pt-icon-highlight"> </span> 
               {' '} 너의 CIA를 위한 SNS
             </h6>
@@ -146,11 +146,11 @@ class MetaCIA extends Component {
       <Link to='/users'>
         <div className="card main-rock rock-read ">
           <div className="card-block">
-            <h4 className="card-title rocks-title"> 회원 리스트  </h4>
+            <h5 className="card-title rocks-title"> 회원 리스트  </h5>
           </div>
           <div className="card-row"> </div>
           <div className="card-block">
-            <h6 className="card-text rocks-text"> 
+            <h6 className="card-text rocks-text text-muted"> 
               <span className="pt-icon pt-icon-tick"> </span> 
               {' '} 계정 관리
             </h6>
