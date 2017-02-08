@@ -54,7 +54,7 @@ class MyNavBar extends Component {
         <div className="container">
           <span className="nav-logo">
             <Link to='/'>
-              <img src={`${host}/media/logo.png`} style={{width: '80px'}}
+              <img src={`${host}/static/logo80.png`} style={{width: '80px'}}
                 className={!this.props.me.isActive && "image-muted"}
               />
             </Link>

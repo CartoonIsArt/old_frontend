@@ -7,7 +7,7 @@ import ReadRock from './ReadRock'
 import 'whatwg-fetch';
 import 'babel-polyfill';
 import {connect } from 'react-redux'
-import {deleteRocks, getRossetaStone, getIndexPageRocks, getRocksByURL, whoami} from './actions'
+import {deleteRocks, getIndexPageRocks, getRocksByURL, whoami} from './actions'
 import Masonry from 'react-masonry-component'
 import {Hotkey, Hotkeys, HotkeysTarget} from '@blueprintjs/core'
 
@@ -29,7 +29,6 @@ class Rocks extends Component {
       }
     })
     this.more = this.more.bind(this)
-    this.props.getRossetaStone()
     Rocks.mutex = true
   }
   getDocHeight() {
@@ -156,7 +155,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
   getIndexPageRocks,
   getRocksByURL,
-  getRossetaStone,
   deleteRocks,
   whoami,
 })

@@ -47,7 +47,7 @@ class Notifications extends Component {
             className="pt-button pt-minimal pt-icon-notifications">
             {
               unread > 0 &&
-              <span className="tag tag-pill tag-success">
+              <span className="badge badge-pill badge-success">
               {
                 unread < 10 ? unread : "9+"
               }
