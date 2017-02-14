@@ -31,6 +31,24 @@ class MetaCIA extends Component {
       </div>
     </div>
     )
+    const doorlockRock = (
+    <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
+    <Link to='/doorlock'>
+      <div className="card main-rock rock-read">
+        <div className="card-block">
+          <h5 className="card-title rocks-title"> 동방 비밀번호 </h5>
+        </div>
+        <div className="card-row"> </div>
+        <div className="card-block">
+          <h6 className="card-text rocks-text text-muted"> 
+            <span className="pt-icon pt-icon-lock"> </span> 
+            {' '}쉿!
+          </h6>
+        </div>
+      </div>
+    </Link>
+    </div>
+    )
     const logoutRock = (
     <div className="col-lg-3 rock-padding col-md-4 col-sm-6 col-xs-12">
       <div className="card main-rock rock-read" onClick={this.logout.bind(this)}>
@@ -166,6 +184,7 @@ class MetaCIA extends Component {
           <Masonry>
             {this.props.me.isGraduate ? donateRock : activateRock}
             {this.props.me.is_staff && manageRock}
+            {this.props.me.isRegularMember && doorlockRock}
             {bugbountRock}
             {lawRock}
             {myAccountRock}

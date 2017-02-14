@@ -336,7 +336,7 @@ export const deleteRocks = (id) => dispatch => {
 export const getFiles = (id = 1) => dispatch => {
   return fetch(host + '/files/' + id + '/', headers("GET")).then( res => {
     return res.json().then( json => {
-      Array.isArray(json) ? console.log('getFiles_ERROR') :  dispatch(updateFiles(json))
+      Array.isArray(json) ? console.log(id, json, 'getFiles_ERROR') :  dispatch(updateFiles(json))
       return res.status
     })
   })

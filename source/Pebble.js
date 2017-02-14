@@ -12,6 +12,7 @@ import moment from 'moment'
 import {youtube_parser} from './Youtube'
 import ProfileImage from './ProfileImage'
 import Linkify from 'react-linkify'
+import Markdown from 'react-remarkable'
 
 
 
@@ -49,18 +50,6 @@ class Pebble extends Component {
       </div>
     )
   }
-  /*
-          <div className="card-block">
-            <Popover content={this.popoverContent()}
-              className="rock-title-more"
-              ineractionKind={PopoverInteractionKind.CLICK}
-              popoverClassName="pt-popover-content-sizing"
-              position={6}
-              transitionDuration={30}
-              useSmartPositioning={false}>
-              <span className="pt-icon-large pt-icon-more"> </span>  
-            </Popover>
-  */
   render() {
     return (
     <div>
@@ -85,7 +74,9 @@ class Pebble extends Component {
         <div className="card-block">
           <p className="card-text pebble-text"> 
           <Linkify properties={{target: "_blank"}}>
+          <Markdown>
             {this.props.text} 
+          </Markdown>
           </Linkify>
           </p>
           <p className="card-text text-xs-right"> <small className="text-muted"> 

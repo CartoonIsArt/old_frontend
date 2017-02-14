@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {Tooltip, Position} from '@blueprintjs/core'
+import {Intent, NonIdealState, Tooltip, Position} from '@blueprintjs/core'
 import {getAllMembers, whoami, postThumbs, deleteThumbs, getThumbsByRock} from './actions'
 
 class Star extends Component {
@@ -68,7 +68,15 @@ class Star extends Component {
         <p className="rock-star card-text text-xs-right text-muted">
           <small> 마음에 들어요{' '} </small>
           <Tooltip
-            content={members && <span className="who-stared"> {members} </span>}
+            intent={Intent.NONE}
+            content={members.length !== 0 ? 
+              <span className="who-stared"> {members} </span> :
+              <NonIdealState
+                className="text-muted"
+                visual="star"
+                title="지금 누르면 1등"
+              />
+            }
             hoverOpenDelay={1}
             hoverCloseDelay={1}
             transitionDuration={1}

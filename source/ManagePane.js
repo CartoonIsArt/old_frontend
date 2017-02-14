@@ -26,6 +26,8 @@ class ManagePane extends Component {
       contributer: false,
       anon: false,
       graduate: false,
+      regular: false,
+      staff: false,
     }
   }
   cond(a, b) {
@@ -56,6 +58,18 @@ class ManagePane extends Component {
     this.props.sortMembers((a, b) => this.cond(a.isAnon, b.isAnon)) :
     this.props.sortMembers((a, b) => this.cond(b.isAnon, a.isAnon))
     this.toggleObject.anon = !this.toggleObject.anon
+  }
+  sortByRegular() {
+    this.toggleObject.regular ?
+    this.props.sortMembers((a, b) => this.cond(a.isRegularMember, b.isRegularMember)) :
+    this.props.sortMembers((a, b) => this.cond(b.isRegularMember, a.isRegularMember)) 
+    this.toggleObject.regular = !this.toggleObject.regular
+  }
+  sortByStaff() {
+    this.toggleObject.staff ?
+    this.props.sortMembers((a, b) => this.cond(a.is_staff, b.is_staff)) :
+    this.props.sortMembers((a, b) => this.cond(b.is_staff, a.is_staff))
+    this.toggleObject.staff = !this.toggleObject.staff
   }
   sortByGraduate() {
     this.toggleObject.graduate ?
@@ -98,6 +112,14 @@ class ManagePane extends Component {
                   가입 승인
                   <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
                   </th>
+                  <th onClick={this.sortByRegular.bind(this)}>
+                  정회원
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
+                  </th>
+                  <th onClick={this.sortByStaff.bind(this)}>
+                  임원진
+                  <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
+                  </th>
                   <th onClick={this.sortByGraduate.bind(this)}>
                   졸업
                   <span className="pt-icon sort-button pt-icon-double-caret-vertical"> </span>
@@ -119,6 +141,8 @@ class ManagePane extends Component {
                     isGraduate={member.isGraduate}
                     studentNumber={member.student_number}
                     department={member.department}
+                    isStaff={member.is_staff}
+                    isRegularMember={member.isRegularMember}
                   />
                 ))}
                 </tbody>

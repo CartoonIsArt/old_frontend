@@ -65,6 +65,16 @@ class Profile extends Component {
         }
       })
   }
+  onStudentNumberBlur(event) {
+    var student_number = event.target.value.toString()
+    if(student_number.match(/^[0-9]{10}$/)){
+      this.setState({isStudentNumberAlert: false})
+      this.setState({student_number})
+    }
+    else {
+      this.setState({isStudentNumberAlert: true})
+    }
+  }
   onPasswordBlur(event) {
     var password = event.target.value.toString()
     if(!password || password.length < 8){
@@ -166,8 +176,12 @@ class Profile extends Component {
                   onChange={e => this.setState({student_number: e.target.value})}
                   defaultValue={this.props.me.student_number}
                   placeholder={this.props.me.student_number}
+                  onBlur={e => this.onStudentNumberBlur(e)}
                   className="club-join-input pt-input .modifier"
                   />
+                {this.state.isStudentNumberAlert &&
+                  <span role="alert" className="club-join-input-error"> <small>
+                    인식할 수 없는 학번입니다(2000000000) </small> </span>}
               </div>
               <div className="club-join-form">
                 <strong> 비밀번호 </strong>

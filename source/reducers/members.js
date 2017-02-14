@@ -21,6 +21,8 @@ export const members = (state=[], action) => {
         if(action.members.isContributer !== undefined) {e.isContributer = action.members.isContributer}
         if(action.members.isAnon !== undefined) {e.isAnon = action.members.isAnon}
         if(action.members.isGraduate !== undefined) {e.isGraduate = action.members.isGraduate}
+        if(action.members.is_staff !== undefined) {e.is_staff = action.members.is_staff}
+        if(action.members.isRegularMember !== undefined) {e.isRegularMember = action.members.isRegularMember}
       }
       return e
     })

@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {connect } from 'react-redux'
 import {postRossetaStone, postThumbs, getFiles, getRocks, deleteRocks, whoami, getMembers} from './actions'
+import Markdown from 'react-remarkable'
 import Comments from './Comments'
 import CreateComment from './CreateComment'
 import Pebbles from './Pebbles'
 import CreatePebble from './CreatePebble'
-import {Popover, PopoverInteractionKind, Position } from '@blueprintjs/core'
+import {NonIdealState, Intent, Popover, PopoverInteractionKind, Position } from '@blueprintjs/core'
 import MyNavBar from './MyNavBar'
 import Star from './Star'
 import moment from 'moment'
@@ -23,6 +24,7 @@ class ReadRock extends Component{
       "authorId": "",
       "isCommentView": true,
       "isCreatePebble": false,
+      wasRemoved: false,
       text: "",
       badges: []
     }
@@ -37,6 +39,12 @@ class ReadRock extends Component{
     })
     this.props.getRocks(this.props.params.id)
     .then( json => {
+      if(json.detail) {
+        this.setState({wasRemoved: true})
+      }
+      else {
+        this.setState({wasRemoved: false})
+      }
       this.setState({text: json.text})
       json.attached_image && 
       this.props.files.filter(e => e.id == json.attached_image).length === 0 &&
@@ -50,7 +58,6 @@ class ReadRock extends Component{
         })
       })
     })
-    this.props.postRossetaStone({rock: this.props.params.id})
   }
   toggleIsCreatePebble () {
     this.setState({isCreatePebble: !this.state.isCreatePebble})
@@ -96,6 +103,14 @@ class ReadRock extends Component{
         {!this.props.isModal && <MyNavBar />}
         <div className={!this.props.isModal && "container"}>
         {
+        this.props.rocks.filter(e => e.id == this.props.params.id).length === 0 ?
+        <div style={{marginTop: "100px"}}>
+          <NonIdealState 
+                visual="trash"
+                title="그런 글 없어요"
+                description="지운듯?"/>
+        </div>
+        :
         this.props.rocks
         .filter(e => (e.id == this.props.params.id))
         .map(rock=>(
@@ -122,7 +137,9 @@ class ReadRock extends Component{
               <h6 className="rock-subtitle card-subtitle text-muted"> 
               {this.state.authorName}
               {' '}
-              {this.state.badges.map( badge => <Badge key={badge} badgeId={badge} />) }
+              {
+              this.state.badges && 
+              this.state.badges.map( badge => <Badge key={badge} badgeId={badge} />) }
               </h6>
             </div>
             {
@@ -154,9 +171,7 @@ class ReadRock extends Component{
 
          <div className="card-block">
            <p className="card-text rock-text"> 
-           <Linkify properties={{target: "_blank"}}>
-            {rock.text} 
-           </Linkify>
+             <Markdown source={rock.text}  />
            </p>
          </div>
          </div>

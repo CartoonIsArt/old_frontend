@@ -19,6 +19,7 @@ import Laws from './Laws'
 import Bugbount from './Bugbount'
 import Donations from './Donations'
 import Profile from './Profile'
+import Doorlock from './Doorlock'
 import 'whatwg-fetch';
 import 'babel-polyfill';
 
@@ -48,6 +49,7 @@ render(
         <Route path="laws" component={Laws} />
         <Route path="bugbount" component={Bugbount} />
         <Route path="donations" component={Donations} />
+        <Route path="doorlock" component={Doorlock} />
         <Route path="create" component={CreateRock} />
         <Route path="activations" component={Activations} />
         <Route path="profile" component={Profile} />

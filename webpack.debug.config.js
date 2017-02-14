@@ -21,7 +21,7 @@ module.exports = {
           'stage-0'
 	      ],
         plugins: [
-          "transform-decorators-legacy"
+          "transform-decorators-legacy",
         ]
       }
     }]

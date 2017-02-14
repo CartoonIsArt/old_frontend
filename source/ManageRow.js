@@ -4,11 +4,14 @@ import {getMembers, patchMembers} from './actions'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import moment from 'moment'
-
+import Modal from 'react-modal'
 
 class ManageRow extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      isModalOpen: false,
+    }
     this.toggleSuccess = {
       className: "toaster-success",
       timeout: 1500,
@@ -51,6 +54,18 @@ class ManageRow extends Component {
       id: this.props.memberId
     })
   }
+  toggleRegularMember (event) {
+    this.fetchToggle({
+      isRegularMember: !this.props.isRegularMember,
+      id: this.props.memberId
+    })
+  }
+  toggleStaff (event) {
+    this.fetchToggle({
+      is_staff: !this.props.isStaff,
+      id: this.props.memberId
+    })
+  }
   toggleGraduate (event) {
     this.fetchToggle({
       isGraduate: !this.props.isGraduate,
@@ -64,7 +79,13 @@ class ManageRow extends Component {
   render() {
     return (
       <tr>
-        <td> 
+        <Modal isOpen={this.state.isModalOpen}>
+          <h1> test </h1>
+          <button type="button" onClick={() => this.setState({isModalOpen: false})}>
+            close
+          </button>
+        </Modal>
+        <td onClick={() => this.setState({isModalOpen: true})}>
           <div>
             {this.props.name} 
           </div>
@@ -100,6 +121,18 @@ class ManageRow extends Component {
           <Switch 
             checked={!this.props.isAnon}
             onChange={this.toggleAnon.bind(this)}
+          />
+        </td>
+        <td>
+          <Switch 
+            checked={this.props.isRegularMember}
+            onChange={this.toggleRegularMember.bind(this)}
+          />
+        </td>
+        <td>
+          <Switch 
+            checked={this.props.isStaff}
+            onChange={this.toggleStaff.bind(this)}
           />
         </td>
         <td>

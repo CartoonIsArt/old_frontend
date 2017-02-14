@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
-import {getFiles, getMembers} from './actions'
+import {getMembers} from './actions'
 import ProfileImage from './ProfileImage'
 import moment from 'moment'
 import {youtube_parser} from './Youtube'
@@ -10,16 +10,26 @@ import Badge from './Badge'
 class Rock extends Component {
   constructor(props) {
     super(props)
-    this.props.imgId &&
-    this.props.files.filter(e => e.id == this.props.imgId).length === 0 &&
-    this.props.getFiles(this.props.imgId)
-    this.props.members.filter(e => e.id == this.props.author).length === 0 &&
+    this.state = {
+      authorId: "",
+      authorName: "",
+      authorProfileImageId: undefined,
+      isAuthorStaff: false,
+      authorBadges: [],
+    }
     this.props.getMembers(this.props.author)
+    .then(json => {
+      this.setState({authorId: json.id})
+      this.setState({authorName: json.last_name})
+      this.setState({isAuthorStaff: json.is_staff})
+      this.setState({authorProfileImageId: json.profile_image})
+      this.setState({authorBadges: json.badges})
+    })
   }
 
   render() {
     return (
-      <div className={!this.props.isRead ? "card main-rock rock-unread" : "card main-rock rock-read"}>
+      <div className={this.state.isAuthorStaff ? "card main-rock rock-unread" : "card main-rock rock-read"}>
         { //if has image
           this.props.imgId ?
           <ProfileImage
@@ -49,35 +59,31 @@ class Rock extends Component {
         <div className="card-row"> </div>
         <div className="card-block rocks-summary">
           <h6 className="card-text rocks-text"> 
-          {
-            this.props.members
-            .filter( e => e.id == this.props.author)
-            .map(e => 
-            <div key={e.id}>
-              <ProfileImage
-                wrapperClass="rocks-profile-wrapper"
-                imgClass="rocks-profile"
-                imgId={e.profile_image}           />
-              <div className="rocks-profile-block">
-                <div className="rocks-profile-name text-softblack">
-                  <small> {e.last_name} </small>
-                  {
-                  e.badges.map( badge => (<Badge key={badge} badgeId={badge} />))
-                  }
-                </div>
-                <div className="rocks-profile-time text-muted">
-                  <span className="pt-icon pt-icon-history pt-icon-small">
-                  <small> 
-                    { moment() - moment(this.props.touchedDate) < 24 * 60 * 60 * 1000 ? 
-                      moment(this.props.touchedDate).locale('ko').fromNow() :
-                      moment(this.props.touchedDate).locale('ko').format('MMMM Do LT')}
-                  </small>
-                  </span>
-                </div>
+            {
+            this.state.authorProfileImageId &&
+            <ProfileImage
+              wrapperClass="rocks-profile-wrapper"
+              imgClass="rocks-profile"
+              imgId={this.state.authorProfileImageId}           />
+            }
+            <div className="rocks-profile-block">
+              <div className="rocks-profile-name text-softblack">
+                <small> {this.state.authorName} </small>
+                {
+                  this.state.authorBadges &&
+                  this.state.authorBadges.map( badge => (<Badge key={badge} badgeId={badge} />))
+                }
+              </div>
+              <div className="rocks-profile-time text-muted">
+                <span className="pt-icon pt-icon-history pt-icon-small">
+                <small> 
+                  { moment() - moment(this.props.touchedDate) < 24 * 60 * 60 * 1000 ? 
+                    moment(this.props.touchedDate).locale('ko').fromNow() :
+                    moment(this.props.touchedDate).locale('ko').format('MMMM Do LT')}
+                </small>
+                </span>
               </div>
             </div>
-            )
-          }
           </h6>
         </div>
     </div>
@@ -95,7 +101,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ({
   getMembers,
-  getFiles
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rock)

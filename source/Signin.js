@@ -1,17 +1,20 @@
 import React, {Component} from 'react'
 import DayPicker, {DateUtils} from "react-day-picker"
-import {InputGroup, NonIdealState, Toaster, Radio, RadioGroup, Switch} from "@blueprintjs/core"
+import {Checkbox, InputGroup, NonIdealState, Toaster, Radio, RadioGroup, Switch} from "@blueprintjs/core"
 import {DateInput} from '@blueprintjs/datetime'
 import 'moment/locale/ko'
 import MomentLocaleUtils from 'react-day-picker/moment'
 import {connect} from 'react-redux'
-import {isExistUsername, signin} from './actions'
+import {getMeta, isExistUsername, signin} from './actions'
 import {host} from './Configure'
 
 class Signin extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      agreeLaw: false,
+      agreeTerms: false,
+      agreeAll: false,
       isUsernameTooShortAlert: false,
       isUsernameAlreadyExistAlert: false,
       isNameAlert: false,
@@ -30,6 +33,7 @@ class Signin extends Component {
       student_number: 0,
       date_of_birth: new Date(new Date().setFullYear(new Date().getFullYear() - 20)),
     }
+    this.props.getMeta()
   }
   componentWillMount() {
     this.toaster = Toaster.create()
@@ -150,6 +154,7 @@ class Signin extends Component {
           </div> :
           <div className="club-join-container">
             <h1 className="club-join-title"> CIA 가입하기 </h1>
+            {this.state.agreeAll ?
             <div className="club-join-content">
               <div className="club-join">
                 <div className="club-join-form"> {/* ----------name  */ }
@@ -248,6 +253,45 @@ class Signin extends Component {
                 <img src={`${host}/static/rmt.png`} height="595.5px"/>
                </div>
              </div>
+              :
+              <div className="agree">
+                <div className="agree-box">
+                  <Checkbox 
+                  checked={this.state.agreeLaw}
+                  onChange={e => this.setState({agreeLaw: !this.state.agreeLaw})}
+                  className='pt-large'>
+                    <h5> C.I.A. 회칙 동의(필수) </h5>
+                  </Checkbox>
+                  <div className="agree-text">
+                    {
+                    this.props.meta.filter(e => e.name === 'law')
+                    .map(e => e.value)
+                    }
+                  </div>
+                </div>
+                <div className="agree-box">
+                  <Checkbox 
+                  checked={this.state.agreeTerms}
+                  onChange={e => this.setState({agreeTerms: !this.state.agreeTerms})}
+                  className='pt-large'>
+                    <h5> 개인정보 수집 및 이용에 대한 안내(필수) </h5>
+                  </Checkbox>
+                  <div className="agree-text">
+                    {
+                    this.props.meta.filter(e => e.name === 'terms')
+                    .map(e => e.value)
+                    }
+                  </div>
+                </div>
+                  <button type="button" className="pt-button pt-intent-success float-right"
+                    onClick={() => this.state.agreeLaw && this.state.agreeTerms && this.setState({agreeAll: true})}
+                    disabled={!(this.state.agreeLaw && this.state.agreeTerms)}
+                  >
+                  동의합니다
+                  <span className="pt-icon-standard pt-icon-arrow-right pt-align-right"> </span>
+                  </button>
+              </div>
+              }
            </div>
          }
       </div>
@@ -260,9 +304,11 @@ Signin.contextTypes = {
 }
 
 const mapStateToProps = state => ({
+  meta: state.meta
 })
 
 const mapDispatchToProps = ({
+  getMeta,
   isExistUsername,
   signin
 })

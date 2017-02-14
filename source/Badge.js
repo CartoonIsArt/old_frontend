@@ -13,7 +13,8 @@ class Badge extends Component {
     .then(badge => this.setState({badge}))
     this.colorMap = {
       1: "badge-primary",
-      2: "badge-niagara"
+      2: "badge-niagara",
+      3: "badge-hazelnut"
     }
   }
   render(){

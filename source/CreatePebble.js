@@ -5,6 +5,7 @@ import DropzoneComponent from 'react-dropzone-component'
 import {Intent, Alert, Toaster, IToaster, EditableText} from '@blueprintjs/core'
 import ProfileImage from './ProfileImage'
 import {youtube_parser} from './Youtube'
+import Markdown from 'react-remarkable'
 
 class CreatePebbles extends Component {
   constructor(props)  {
@@ -15,6 +16,7 @@ class CreatePebbles extends Component {
       parent_rock: this.props.rockId,
       isUploaded: false,
       isOpenDeleteAlert: false,
+      preview: false,
     }
     this.props.whoami()
     .then( () => {
@@ -122,6 +124,13 @@ class CreatePebbles extends Component {
           </div>
         }
           <div className="card-block">
+          {this.state.preview ?
+          <p className="card-text rock-text">
+            <Markdown>
+              {this.state.text}
+            </Markdown>
+          </p>
+          :
             <EditableText
               placeholder="more..."
               multiline
@@ -131,7 +140,10 @@ class CreatePebbles extends Component {
               classNmae="create-rock-textarea"
               onChange={this.textChange}
             />
+            }
             <button type="button" className="pt-button pt-intent-primary create-rock-submit" onClick={this.mySubmit}> 이어쓰기 </button>
+            <button type="button" className="pt-button create-rock-submit" 
+              onClick={() => this.setState({preview: !this.state.preview})}> 미리보기 </button>
           </div>
         </form>
       </div>

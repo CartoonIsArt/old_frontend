@@ -7,6 +7,8 @@ import DropzoneComponent from 'react-dropzone-component'
 import {Alert, Spinner, Toaster, IToaster, Intent, EditableText} from '@blueprintjs/core'
 import ProfileImage from './ProfileImage'
 import {youtube_parser} from './Youtube'
+import Markdown from 'react-remarkable'
+import Linkify from 'react-linkify'
 
 class CreateRock extends Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class CreateRock extends Component {
       isUploaded: false,
       isSpin: false,
       isOpenDeleteAlert: false,
+      preview: false,
     }
     this.mySubmit = this.mySubmit.bind(this)
     this.titleChange = this.titleChange.bind(this)
@@ -117,12 +120,16 @@ class CreateRock extends Component {
           </Alert>
           <form>
             <div className="card-block"> 
+            {this.state.preview ?
+            <h5 className="card-title"> <strong> {this.state.title} </strong> </h5>
+            :
               <EditableText 
                 className="create-rock-title"
                 placeholder="제목"
                 value={this.state.title}
                 onChange={this.titleChange}
               />
+            }
             </div>
             {
             this.state.youtube ?
@@ -150,6 +157,15 @@ class CreateRock extends Component {
             </div>
             }
             <div className="card-block"> 
+            {this.state.preview ?
+            <p className="card-text rock-text">
+            <Linkify>
+              <Markdown>
+                {this.state.text}
+              </Markdown>
+            </Linkify>
+            </p>
+            :
               <EditableText
                 placeholder="오늘은 무슨 일이야?"
                 multiline
@@ -159,9 +175,12 @@ class CreateRock extends Component {
                 className="create-rock-textarea"
                 onChange={this.textChange}
               />
+            }
             </div>
             <div className="card-block text-xs-right">
                 <button type="button" className="pt-button pt-intent-primary create-rock-submit" onClick={this.mySubmit}> 게시  </button>
+                <button type="button" className="pt-button create-rock-submit" 
+                  onClick={() => this.setState({preview: !this.state.preview})}> 미리보기  </button>
             </div>
           </form>
         </div>
